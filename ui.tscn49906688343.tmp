@@ -1,0 +1,510 @@
+[gd_scene load_steps=8 format=3 uid="uid://bko45l6cmd0ou"]
+
+[ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="1_27fn8"]
+[ext_resource type="Script" uid="uid://cw3dnc8h7gt7b" path="res://ui.gd" id="1_nltto"]
+[ext_resource type="Theme" uid="uid://bmc673ftnnafr" path="res://themes/battleinfo.tres" id="2_nltto"]
+[ext_resource type="Texture2D" uid="uid://dexy57dce8ats" path="res://images/menu_soul.png" id="3_ibotj"]
+[ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="4_y4yjw"]
+[ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="5_waa4j"]
+[ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/ui_type_default.wav" id="6_ok7cu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_nltto")
+
+[node name="QuickInfo" type="ColorRect" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 52.0
+offset_right = 174.0
+offset_bottom = 162.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="QuickInfo"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 104.0
+
+[node name="right" type="ColorRect" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 5.999998
+offset_right = 142.0
+offset_bottom = 104.0
+
+[node name="up" type="ColorRect" parent="QuickInfo"]
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="QuickInfo"]
+layout_mode = 0
+offset_top = 103.99999
+offset_right = 142.0
+offset_bottom = 109.99999
+
+[node name="PlayerName" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 40.0
+theme = ExtResource("1_27fn8")
+text = "Chara"
+
+[node name="LV" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 46.0
+offset_right = 34.0
+offset_bottom = 62.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "LV"
+
+[node name="HP" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 64.0
+offset_right = 34.0
+offset_bottom = 80.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "HP"
+
+[node name="G" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 82.0
+offset_right = 24.0
+offset_bottom = 98.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "G"
+
+[node name="LoveValue" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 70.0
+offset_bottom = 62.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "1"
+
+[node name="HPValue" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 64.0
+offset_right = 70.0
+offset_bottom = 80.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "20/20"
+
+[node name="GValue" type="Label" parent="QuickInfo"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 82.0
+offset_right = 70.0
+offset_bottom = 98.0
+theme = ExtResource("2_nltto")
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="SubmenuSelector" type="ColorRect" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 168.0
+offset_right = 174.0
+offset_bottom = 316.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="SubmenuSelector"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 142.0
+
+[node name="right" type="ColorRect" parent="SubmenuSelector"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 5.999998
+offset_right = 142.0
+offset_bottom = 142.0
+
+[node name="up" type="ColorRect" parent="SubmenuSelector"]
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="SubmenuSelector"]
+layout_mode = 0
+offset_top = 142.0
+offset_right = 142.0
+offset_bottom = 148.0
+
+[node name="Item" type="Label" parent="SubmenuSelector"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 20.0
+offset_right = 110.0
+offset_bottom = 52.0
+theme = ExtResource("1_27fn8")
+text = "ITEM"
+
+[node name="Stat" type="Label" parent="SubmenuSelector"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 56.0
+offset_right = 110.0
+offset_bottom = 88.0
+theme = ExtResource("1_27fn8")
+text = "STAT"
+
+[node name="Cell" type="Label" parent="SubmenuSelector"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 92.0
+offset_right = 110.0
+offset_bottom = 124.0
+theme = ExtResource("1_27fn8")
+text = "CELL"
+
+[node name="Textbox" type="ColorRect" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 320.0
+offset_right = 608.0
+offset_bottom = 472.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="Textbox"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 146.0
+
+[node name="right" type="ColorRect" parent="Textbox"]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 5.999998
+offset_right = 576.0
+offset_bottom = 146.0
+
+[node name="up" type="ColorRect" parent="Textbox"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="Textbox"]
+layout_mode = 0
+offset_top = 146.0
+offset_right = 576.0
+offset_bottom = 152.0
+
+[node name="TypeWriterLabel" type="RichTextLabel" parent="Textbox" node_paths=PackedStringArray("typing_sound_player")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 548.0
+offset_bottom = 118.0
+theme = ExtResource("4_y4yjw")
+text = "* Hello, world!
+* Line 2
+* Line 3"
+script = ExtResource("5_waa4j")
+typing_speed = 30.0
+typing_sound_player = NodePath("../TypeSound")
+metadata/_custom_type_script = "uid://bigcfyacvshrd"
+
+[node name="TypeSound" type="AudioStreamPlayer" parent="Textbox"]
+stream = ExtResource("6_ok7cu")
+
+[node name="Inventory" type="ColorRect" parent="."]
+visible = false
+offset_left = 188.0
+offset_top = 52.0
+offset_right = 534.0
+offset_bottom = 470.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="Inventory"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 412.0
+
+[node name="right" type="ColorRect" parent="Inventory"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 5.999998
+offset_right = 346.0
+offset_bottom = 412.0
+
+[node name="up" type="ColorRect" parent="Inventory"]
+layout_mode = 0
+offset_right = 346.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="Inventory"]
+layout_mode = 0
+offset_top = 412.0
+offset_right = 346.0
+offset_bottom = 418.0
+
+[node name="Item1" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 28.0
+offset_right = 138.0
+offset_bottom = 60.0
+theme = ExtResource("1_27fn8")
+text = "Item1"
+
+[node name="Item2" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 60.0
+offset_right = 138.0
+offset_bottom = 92.0
+theme = ExtResource("1_27fn8")
+text = "Item2"
+
+[node name="Item3" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 92.0
+offset_right = 138.0
+offset_bottom = 124.0
+theme = ExtResource("1_27fn8")
+text = "Item3"
+
+[node name="Item4" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 124.0
+offset_right = 138.0
+offset_bottom = 156.0
+theme = ExtResource("1_27fn8")
+text = "Item4"
+
+[node name="Item5" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 156.0
+offset_right = 138.0
+offset_bottom = 188.0
+theme = ExtResource("1_27fn8")
+text = "Item5"
+
+[node name="Item6" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 188.0
+offset_right = 138.0
+offset_bottom = 220.0
+theme = ExtResource("1_27fn8")
+text = "Item6"
+
+[node name="Item7" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 220.0
+offset_right = 138.0
+offset_bottom = 252.0
+theme = ExtResource("1_27fn8")
+text = "Item7"
+
+[node name="Item8" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 252.0
+offset_right = 138.0
+offset_bottom = 284.0
+theme = ExtResource("1_27fn8")
+text = "Item8"
+
+[node name="Use" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 364.0
+offset_right = 86.0
+offset_bottom = 396.0
+theme = ExtResource("1_27fn8")
+text = "USE"
+
+[node name="Info" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 364.0
+offset_right = 182.0
+offset_bottom = 396.0
+theme = ExtResource("1_27fn8")
+text = "INFO"
+
+[node name="Drop" type="Label" parent="Inventory"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 364.0
+offset_right = 310.0
+offset_bottom = 396.0
+theme = ExtResource("1_27fn8")
+text = "DROP"
+
+[node name="Statistics" type="ColorRect" parent="."]
+visible = false
+offset_left = 188.0
+offset_top = 52.0
+offset_right = 534.0
+offset_bottom = 470.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="Statistics"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 412.0
+
+[node name="right" type="ColorRect" parent="Statistics"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 5.999998
+offset_right = 346.0
+offset_bottom = 412.0
+
+[node name="up" type="ColorRect" parent="Statistics"]
+layout_mode = 0
+offset_right = 346.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="Statistics"]
+layout_mode = 0
+offset_top = 412.0
+offset_right = 346.0
+offset_bottom = 418.0
+
+[node name="Name" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 32.0
+offset_right = 122.0
+offset_bottom = 64.0
+theme = ExtResource("1_27fn8")
+text = "\"Chara\""
+
+[node name="LV" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 88.0
+offset_right = 122.0
+offset_bottom = 120.0
+theme = ExtResource("1_27fn8")
+text = "LV 1"
+
+[node name="HP" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 120.0
+offset_right = 122.0
+offset_bottom = 152.0
+theme = ExtResource("1_27fn8")
+text = "HP 20 / 20"
+
+[node name="AT" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 184.0
+offset_right = 144.0
+offset_bottom = 216.0
+theme = ExtResource("1_27fn8")
+text = "AT 0 (0)"
+
+[node name="DF" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 216.0
+offset_right = 144.0
+offset_bottom = 248.0
+theme = ExtResource("1_27fn8")
+text = "DF 0 (0)"
+
+[node name="EXP" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 184.0
+offset_right = 304.0
+offset_bottom = 216.0
+theme = ExtResource("1_27fn8")
+text = "EXP: 0"
+
+[node name="NEXT" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 216.0
+offset_right = 304.0
+offset_bottom = 248.0
+theme = ExtResource("1_27fn8")
+text = "NEXT: 10"
+
+[node name="Weapon" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 276.0
+offset_right = 144.0
+offset_bottom = 308.0
+theme = ExtResource("1_27fn8")
+text = "WEAPON: Stick"
+
+[node name="Armor" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 308.0
+offset_right = 196.0
+offset_bottom = 340.0
+theme = ExtResource("1_27fn8")
+text = "ARMOR: Bandage"
+
+[node name="Gold" type="Label" parent="Statistics"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 348.0
+offset_right = 210.0
+offset_bottom = 380.0
+theme = ExtResource("1_27fn8")
+text = "GOLD: 0"
+
+[node name="Cellphone" type="ColorRect" parent="."]
+visible = false
+offset_left = 188.0
+offset_top = 52.0
+offset_right = 534.0
+offset_bottom = 470.0
+color = Color(0, 0, 0, 1)
+
+[node name="left" type="ColorRect" parent="Cellphone"]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 412.0
+
+[node name="right" type="ColorRect" parent="Cellphone"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 5.999998
+offset_right = 346.0
+offset_bottom = 412.0
+
+[node name="up" type="ColorRect" parent="Cellphone"]
+layout_mode = 0
+offset_right = 346.0
+offset_bottom = 6.0
+
+[node name="down" type="ColorRect" parent="Cellphone"]
+layout_mode = 0
+offset_top = 412.0
+offset_right = 346.0
+offset_bottom = 418.0
+
+[node name="Soul" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 56.0
+offset_top = 196.0
+offset_right = 74.0
+offset_bottom = 214.0
+texture = ExtResource("3_ibotj")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://dbd742q11afyd"]
+
+[ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_0y01u"]
+
+[resource]
+script = ExtResource("1_0y01u")
+name = "Proton Slicer"
+info = "* Looks so sharp it could slice protons in half."
+on_use = "* You equipped the Proton Slicer."
+full_heal = false
+equipped_at_boost = 99
+equippable = true
+is_weapon = true
+metadata/_custom_type_script = "uid://dhmgh4wuda7go"

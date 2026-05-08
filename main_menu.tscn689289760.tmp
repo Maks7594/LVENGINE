@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2clpx36qdrba"]
+
+[ext_resource type="Script" uid="uid://do3phsbtqkh25" path="res://main_menu.gd" id="1_glbon"]
+[ext_resource type="AudioStream" uid="uid://2owpqapn6dqm" path="res://music/castletown.ogg" id="2_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://ju0m5x2co2x3" path="res://sounds/ui_confirm.wav" id="2_qe12f"]
+[ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/ui_select.wav" id="3_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://bouatef2s8e3f" path="res://logo.png" id="3_qe12f"]
+[ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="4_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://c0pqnt43etk8r" path="res://images/soul.png" id="5_dy7ct"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_glbon")
+
+[node name="Soul" type="TextureRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 268.0
+offset_top = 192.0
+offset_right = 284.0
+offset_bottom = 208.0
+texture = ExtResource("5_dy7ct")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Confirm" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_qe12f")
+volume_db = -5.0
+
+[node name="Select" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_8qtwp")
+volume_db = -5.0
+
+[node name="Music" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_nlkkf")
+volume_db = -5.0
+autoplay = true
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="MainMenu"]
+layout_mode = 0
+offset_left = -317.0
+offset_top = -236.0
+offset_right = 317.0
+offset_bottom = -135.0
+texture = ExtResource("3_qe12f")
+expand_mode = 1
+
+[node name="Play" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8qtwp")
+text = "Play"
+horizontal_alignment = 1
+
+[node name="Settings" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8qtwp")
+text = "Settings"
+
+[node name="Quit" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 22.0
+offset_right = 28.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8qtwp")
+text = "Quit"
+horizontal_alignment = 1
+
+[node name="Settings" type="Control" parent="."]
+anchors_preset = 0

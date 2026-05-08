@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://buo48gte780il"]
+
+[ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_fhnjs"]
+
+[resource]
+script = ExtResource("1_fhnjs")
+name = "Bandage"
+info = "* It has already been used several times."
+on_use = "* You used the Bandage."
+heal = 10
+full_heal = false
+is_armor = true
+metadata/_custom_type_script = "uid://dhmgh4wuda7go"

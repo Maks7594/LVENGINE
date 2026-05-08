@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bmc673ftnnafr"]
+
+[ext_resource type="FontFile" uid="uid://mtkwi1j1j0aw" path="res://fonts/small.ttf" id="1_ykggj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_480q3"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyvn4"]
+bg_color = Color(1, 1, 0, 1)
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_ykggj")
+ProgressBar/colors/font_color = Color(1, 1, 1, 0)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 0)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_480q3")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tyvn4")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0)
+RichTextLabel/font_sizes/mono_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/mono_font = ExtResource("1_ykggj")
+RichTextLabel/fonts/normal_font = ExtResource("1_ykggj")

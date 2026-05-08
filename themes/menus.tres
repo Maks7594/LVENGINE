@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://udeoiv5vgmvo"]
+
+[ext_resource type="FontFile" uid="uid://bqn0ioyavj2ye" path="res://fonts/menus.ttf" id="1_57o3v"]
+[ext_resource type="FontFile" uid="uid://b3nbr8fn5vf8r" path="res://fonts/dialogue.ttf" id="1_c2tna"]
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_57o3v")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0)
+RichTextLabel/font_sizes/mono_font_size = 32
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/mono_font = ExtResource("1_c2tna")
+RichTextLabel/fonts/normal_font = ExtResource("1_57o3v")
