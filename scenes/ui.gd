@@ -113,6 +113,11 @@ func generate_info_text(sel_item):
 
 	return '* "%s" - %s\n%s' % [item_name, stat_text, item_info]
 
+func do_text(text: String):
+	PlayerData.global["interact"] = false
+	textbox.visible = true
+	typewriter.typewrite(text)
+
 func tekst(text:String):
 	PlayerData.global["menu_open"] = false
 	PlayerData.recalc_stats(PlayerData.player["love"])
@@ -154,8 +159,13 @@ func _physics_process(_delta):
 				selection = 0
 				submenu = 0
 			else:
-				pass # god this will be so hard
-		
+				pass #TODO: implement. god this will be so hard
+	if not PlayerData.global["menu_open"] and PlayerData.global["interact"]:
+		if Input.is_action_just_pressed("menu"):
+			vis_all(true)
+			Funcs.do_sound(snd_select)
+			PlayerData.global["interact"] = false
+			PlayerData.global["menu_open"] = true
 	if PlayerData.global["menu_open"] and not PlayerData.global["interact"]:
 		if submenu == 0:
 			if Input.is_action_just_pressed("down"):
@@ -239,7 +249,8 @@ func do_confirm(): # todo: finish
 				
 				var is_weapon = PlayerData.get_item_data(item_id, "is_weapon")
 				var is_armor = PlayerData.get_item_data(item_id, "is_armor")
-				var equippable =PlayerData.get_item_data(item_id, "equippable")
+				var equippable = PlayerData.get_item_data(item_id, "equippable")
+				var consumable = PlayerData.get_item_data(item_id, "consumable")
 				
 				var heal = PlayerData.get_item_data(item_id, "heal")
 				var full_heal = PlayerData.get_item_data(item_id, "full_heal")
@@ -269,8 +280,25 @@ func do_confirm(): # todo: finish
 						Funcs.do_sound(snd_item)
 						tekst(message)
 					else:
-						message = PlayerData.get_item_data(item_id, "on_use").c_unescape()
-						tekst(message)
+						if consumable:
+							var on_use_text = PlayerData.get_item_data(item_id, "on_use")
+							if full_heal:
+								PlayerData.player["hp"] = PlayerData.player["max_hp"]
+								message = "%s\n* Your HP was maxed out." % on_use_text
+							else:
+								var old_hp = PlayerData.player["hp"]
+								PlayerData.player["hp"] = min(PlayerData.player["hp"] + heal, PlayerData.player["max_hp"])
+								if PlayerData.player["hp"] == PlayerData.player["max_hp"]:
+									message = "%s\n* Your HP was maxed out." % on_use_text
+								else:
+									message = "%s\n* You healed %d HP." % [on_use_text, PlayerData.player["hp"] - old_hp]
+							
+							PlayerData.player["items"].pop_at(selected_item)
+							tekst(message)
+							update_ui()
+						else:
+							message = PlayerData.get_item_data(item_id, "on_use").c_unescape()
+							tekst(message)
 				
 				elif is_armor:
 					if equippable:
@@ -290,8 +318,25 @@ func do_confirm(): # todo: finish
 						Funcs.do_sound(snd_item)
 						tekst(message)
 					else:
-						message = PlayerData.get_item_data(item_id, "on_use").c_unescape()
-						tekst(message)
+						if consumable:
+							var on_use_text = PlayerData.get_item_data(item_id, "on_use")
+							if full_heal:
+								PlayerData.player["hp"] = PlayerData.player["max_hp"]
+								message = "%s\n* Your HP was maxed out." % on_use_text
+							else:
+								var old_hp = PlayerData.player["hp"]
+								PlayerData.player["hp"] = min(PlayerData.player["hp"] + heal, PlayerData.player["max_hp"])
+								if PlayerData.player["hp"] == PlayerData.player["max_hp"]:
+									message = "%s\n* Your HP was maxed out." % on_use_text
+								else:
+									message = "%s\n* You healed %d HP." % [on_use_text, PlayerData.player["hp"] - old_hp]
+							
+							PlayerData.player["items"].pop_at(selected_item)
+							tekst(message)
+							update_ui()
+						else:
+							message = PlayerData.get_item_data(item_id, "on_use").c_unescape()
+							tekst(message)
 				
 				elif is_armor:
 					var old_armor = int(PlayerData.player["equipped"][1])

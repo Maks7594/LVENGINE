@@ -1,14 +1,33 @@
-[gd_scene load_steps=10 format=4 uid="uid://bg2er5x4vv0gn"]
+[gd_scene format=4 uid="uid://bg2er5x4vv0gn"]
 
 [ext_resource type="Script" uid="uid://bapdqtr4pl8nu" path="res://scenes/rooms/room0.gd" id="1_bqk7w"]
+[ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="2_teq4o"]
+[ext_resource type="AudioStream" uid="uid://rvnao1yacpss" path="res://sounds/enterbattle.wav" id="3_jn4nm"]
 [ext_resource type="PackedScene" uid="uid://bko45l6cmd0ou" path="res://scenes/ui.tscn" id="4_y77y4"]
 [ext_resource type="Texture2D" uid="uid://crdjuojolivf3" path="res://images/ruins.png" id="5_fkshr"]
 [ext_resource type="PackedScene" uid="uid://dkimfhoh8m06p" path="res://scenes/player.tscn" id="6_ah6xh"]
+[ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="6_cnxpv"]
+[ext_resource type="Script" uid="uid://dnxtjrqcjkhkd" path="res://scenes/npc.gd" id="6_uyab2"]
+[ext_resource type="Texture2D" uid="uid://b35f7etef2sg7" path="res://icon.svg" id="7_bedml"]
 [ext_resource type="Script" uid="uid://cr6vcs0a8dp76" path="res://scenes/rooms/room0_trigger.gd" id="7_bowwu"]
+[ext_resource type="AudioStream" uid="uid://ju0m5x2co2x3" path="res://sounds/confirm.wav" id="7_ml7un"]
+[ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="8_teq4o"]
+[ext_resource type="Script" uid="uid://df80nnpf2pmvu" path="res://scenes/rooms/battle_ui_manager.gd" id="9_aodyf"]
+[ext_resource type="Texture2D" uid="uid://clauurbupdmyg" path="res://images/battle/battlebg.png" id="9_jn4nm"]
+[ext_resource type="Texture2D" uid="uid://cy24yuvgkbc33" path="res://images/battle/1.png" id="11_lj1cj"]
+[ext_resource type="Script" uid="uid://dphxss7ck54ji" path="res://scripts/battle_manager.gd" id="12_aodyf"]
+[ext_resource type="Texture2D" uid="uid://b6hxkbfbv401g" path="res://images/battle/2.png" id="12_uyab2"]
+[ext_resource type="Texture2D" uid="uid://g3e30eso56lv" path="res://images/battle/3.png" id="13_bedml"]
+[ext_resource type="Theme" uid="uid://bmc673ftnnafr" path="res://themes/battleinfo.tres" id="14_anl3s"]
+[ext_resource type="Texture2D" uid="uid://dltnbvggo8f3m" path="res://images/battle/0s.png" id="14_aodyf"]
+[ext_resource type="Texture2D" uid="uid://bo01o3fl06cdb" path="res://images/battle/hp.png" id="15_3vehu"]
+[ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="16_3rbc8"]
+[ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="17_igcnr"]
+[ext_resource type="PackedScene" uid="uid://fo2xmw3i6pdd" path="res://scenes/soul.tscn" id="18_jn4nm"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tlwt5"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ml7un"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_teq4o"]
 texture = ExtResource("5_fkshr")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
@@ -303,38 +322,282 @@ texture_region_size = Vector2i(20, 20)
 tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_tlwt5")
-sources/1 = SubResource("TileSetAtlasSource_aqk2v")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_ml7un")
+sources/1 = SubResource("TileSetAtlasSource_teq4o")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
 size = Vector2(38, 120)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anl3s"]
+size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_450ph"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[node name="Room" type="Node2D" unique_id=1869159602]
 script = ExtResource("1_bqk7w")
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node" parent="." unique_id=314723594]
 
-[node name="Music" type="AudioStreamPlayer" parent="SFX"]
+[node name="Music" type="AudioStreamPlayer" parent="SFX" unique_id=1878010645]
 
-[node name="Map" type="TileMapLayer" parent="."]
+[node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=124745348]
+stream = ExtResource("2_teq4o")
+
+[node name="StartBattle" type="AudioStreamPlayer" parent="SFX" unique_id=639157757]
+stream = ExtResource("3_jn4nm")
+
+[node name="World" type="Node2D" parent="." unique_id=629352571]
+
+[node name="Map" type="TileMapLayer" parent="World" unique_id=724907805]
 position = Vector2(0, 1)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD/////AQAEAAMAAAAAAP//AQAEAAMAAAABAP//AQAEAAMAAAACAP//AQAEAAMAAAADAP//AQAEAAMAAAAEAP//AQAEAAMAAAAFAP//AQAEAAMAAAAGAP//AQAFAAEAAAAHAP//AQAGAAEAAAAIAP//AQAEAAMAAAAJAP//AQAEAAMAAAAKAP//AQAEAAMAAAAKAP3/AQAEAAIAAAAKAP7/AQAEAAIAAAAJAP7/AQAEAAIAAAAIAP7/AQAEAAIAAAAHAP7/AQAGAAAAAAAGAP7/AQAFAAAAAAAFAP7/AQAEAAIAAAAEAP7/AQAEAAIAAAADAP7/AQAEAAIAAAACAP7/AQAEAAEAAAABAP7/AQADAAEAAAAAAP7/AQAEAAIAAAD///7/AQAEAAIAAAD///3/AQAEAAIAAAADAP3/AQAEAAIAAAAEAP3/AQAEAAIAAAAFAP3/AQAEAAIAAAAGAP3/AQAEAAIAAAAHAP3/AQAEAAIAAAAJAP3/AQAEAAIAAAAIAP3/AQAEAAIAAAACAP3/AQAEAAIAAAABAP3/AQAEAAIAAAAAAP3/AQAEAAIAAAALAAMAAQADAAMAAAAMAAAAAQAEAAIAAAANAAAAAQAEAAIAAAAOAAAAAQAEAAIAAAAPAAAAAQAEAAIAAAAQAAAAAQAEAAIAAAAQAAEAAQAEAAIAAAAQAAIAAQAFAAIAAAAQAAMAAQAFAAMAAAAMAAMAAQAEAAMAAAAMAAIAAQAEAAIAAAAMAAEAAQAEAAIAAAANAAEAAQAEAAIAAAAOAAEAAQAEAAIAAAAOAAIAAQAEAAIAAAANAAMAAQAEAAMAAAAPAAMAAQAEAAMAAAAPAAIAAQAEAAIAAAAPAAEAAQAEAAIAAAAOAAMAAQAEAAMAAAANAAIAAQAEAAIAAAARAAAAAQAEAAIAAAATAAMAAQADAAIAAAATAA4AAQAKAAAAAAATAA8AAQARAAEAAAASAA8AAQAIAAAAAAARAA8AAQAIAAAAAAAQAA8AAQAIAAAAAAAPAA8AAQAIAAAAAAAOAA8AAQAIAAAAAAANAA8AAQAIAAAAAAAMAA8AAQAIAAAAAAALAA8AAQAIAAAAAAAKAA8AAQAIAAAAAAAJAA8AAQAIAAAAAAAIAA8AAQAIAAAAAAAHAA8AAQAIAAAAAAAGAA8AAQAIAAAAAAAFAA8AAQAIAAAAAAAEAA8AAQAIAAAAAAADAA8AAQAIAAAAAAACAA8AAQAIAAAAAAABAA8AAQAIAAAAAAAAAA8AAQAIAAAAAAD//w8AAQAIAAAAAAD+/w8AAQAIAAAAAAD+/w4AAQAXAAYAAAD//w4AAQAXAAYAAAAAAA4AAQAXAAYAAAABAA4AAQAXAAYAAAACAA4AAQAXAAYAAAADAA4AAQAXAAYAAAAEAA4AAQAXAAYAAAAFAA4AAQAXAAYAAAAGAA4AAQAXAAYAAAAHAA4AAQAXAAYAAAAIAA4AAQAXAAYAAAAJAA4AAQAXAAYAAAAKAA4AAQAXAAYAAAALAA4AAQAXAAYAAAAMAA4AAQAXAAYAAAANAA4AAQAXAAYAAAAOAA4AAQAXAAYAAAAPAA4AAQAXAAYAAAAQAA4AAQAXAAYAAAARAAEAAQAEAAIAAAARAAIAAQAEAAIAAAARAAMAAQAEAAMAAAARAA4AAQAXAAYAAAASAA4AAQAXAAYAAAALAAIAAQADAAIAAAALAAEAAQADAAIAAAALAAAAAQADAAIAAAALAP//AQADAAIAAAALAP7/AQADAAIAAAAKAPz/AQAJAAAAAAAJAPz/AQAJAAAAAAAIAPz/AQAJAAAAAAAHAPz/AQAJAAAAAAAGAPz/AQAJAAAAAAAFAPz/AQAJAAAAAAAEAPz/AQAJAAAAAAADAPz/AQAJAAAAAAACAPz/AQAJAAAAAAABAPz/AQAJAAAAAAAAAPz/AQAJAAAAAAD///z/AQAJAAAAAAALAP3/AQAMAAEAAAALAPz/AQARAAAAAAAMAP7/AQAEAAIAAAANAP7/AQAEAAIAAAAOAP7/AQAEAAIAAAAPAP7/AQAEAAIAAAAQAP7/AQAEAAIAAAARAP7/AQAEAAIAAAARAP//AQAEAAIAAAAQAP//AQAEAAIAAAAPAP//AQAEAAIAAAAOAP//AQAEAAIAAAANAP//AQAEAAIAAAAMAP//AQAEAAIAAAAMAP3/AQAJAAAAAAANAP3/AQAJAAAAAAAOAP3/AQAJAAAAAAAPAP3/AQAJAAAAAAAQAP3/AQAJAAAAAAARAP3/AQAJAAAAAAD9/w8AAQAIAAAAAAD9/w4AAQAGAAIAAAD9/w0AAQAGAAIAAAD9/wwAAQAGAAIAAAD9/wsAAQAGAAIAAAD9/woAAQAGAAIAAAD9/wkAAQAGAAIAAAD9/wgAAQAGAAIAAAD9/wcAAQAGAAIAAAD9/wYAAQAGAAIAAAD9/wUAAQAGAAIAAAD9/wQAAQAGAAIAAAD9/wMAAQAGAAIAAAD9/wIAAQAGAAIAAAD9/wEAAQAGAAIAAAD9/wAAAQAGAAIAAAD9////AQAGAAIAAAD9//7/AQAGAAIAAAD9//3/AQAGAAIAAAD+////AQAEAAIAAAD+//7/AQAEAAIAAAD+//3/AQAEAAIAAAD+//z/AQAJAAAAAAD9//z/AQAJAAAAAAD8//z/AQAQAAAAAAD8//3/AQALAAAAAAD8//7/AQALAAAAAAD8////AQALAAAAAAD8/wAAAQALAAAAAAD8/wEAAQALAAAAAAD8/wUAAQALAAAAAAD8/wIAAQALAAAAAAD8/wMAAQALAAAAAAD8/wQAAQALAAAAAAD8/wYAAQALAAAAAAD8/wcAAQALAAAAAAD8/wgAAQALAAAAAAD8/wkAAQALAAAAAAD8/woAAQALAAAAAAD8/wsAAQALAAAAAAD8/wwAAQALAAAAAAD8/w0AAQALAAAAAAD8/w4AAQALAAAAAAD8/w8AAQAQAAEAAAATAA0AAQAKAAAAAAASAA0AAQAXAAYAAAARAA0AAQAXAAYAAAAQAA0AAQAXAAYAAAAPAA0AAQAXAAYAAAAOAA0AAQAXAAYAAAANAA0AAQAXAAYAAAAMAA0AAQAXAAYAAAALAA0AAQAXAAYAAAAKAA0AAQAXAAYAAAAJAA0AAQAXAAYAAAAIAA0AAQAXAAYAAAAHAA0AAQAXAAYAAAAGAA0AAQAXAAYAAAAFAA0AAQAXAAYAAAAEAA0AAQAXAAYAAAADAA0AAQAXAAYAAAACAA0AAQAXAAYAAAABAA0AAQAXAAYAAAAAAA0AAQAXAAYAAAD//w0AAQAXAAYAAAD+/w0AAQAXAAYAAAATAAwAAQAKAAAAAAATAAsAAQAKAAAAAAATAAYAAQADAAMAAAATAAUAAQADAAIAAAATAAQAAQADAAIAAAARAAQAAQAJAAQAAAAQAAQAAQAJAAQAAAAPAAQAAQAJAAQAAAAOAAQAAQAJAAQAAAANAAQAAQAJAAQAAAAMAAQAAQAJAAQAAAALAAQAAQAJAAQAAAAKAAQAAQAJAAQAAAAKAAMAAQAJAAQAAAAKAAIAAQAJAAQAAAAKAAEAAQAJAAQAAAAKAAAAAQAJAAQAAAAJAAAAAQAJAAQAAAAIAAAAAQAJAAQAAAAHAAAAAQAJAAQAAAAGAAAAAQAJAAQAAAAFAAAAAQAJAAQAAAAEAAAAAQAJAAQAAAADAAAAAQAJAAQAAAACAAAAAQAJAAQAAAABAAAAAQAJAAQAAAAAAAAAAQAJAAQAAAD//wAAAQAJAAQAAAD+/wAAAQAJAAQAAAD+/wEAAQAJAAQAAAD+/wIAAQAJAAQAAAD+/wMAAQAJAAQAAAD+/wQAAQAJAAQAAAD+/wUAAQAJAAQAAAD+/wYAAQAJAAQAAAD+/wcAAQAJAAQAAAD+/wgAAQAJAAQAAAD+/wkAAQAJAAQAAAD+/woAAQAJAAQAAAD+/wsAAQAJAAQAAAD+/wwAAQAJAAQAAAD//wwAAQAJAAQAAAAAAAwAAQAJAAQAAAABAAwAAQAJAAQAAAACAAwAAQAJAAQAAAADAAwAAQAJAAQAAAAEAAwAAQAJAAQAAAAFAAwAAQAJAAQAAAAGAAwAAQAJAAQAAAAHAAwAAQAJAAQAAAAIAAwAAQAJAAQAAAAJAAwAAQAJAAQAAAAKAAwAAQAJAAQAAAALAAwAAQAJAAQAAAAMAAwAAQAJAAQAAAANAAwAAQAJAAQAAAAOAAwAAQAJAAQAAAAPAAwAAQAJAAQAAAAQAAwAAQAJAAQAAAARAAwAAQAJAAQAAAASAAwAAQAJAAQAAAD//wsAAQAIAAQAAAD//woAAQAIAAQAAAD//wkAAQAIAAQAAAD//wgAAQAIAAQAAAD//wcAAQAIAAQAAAAAAAYAAQAIAAQAAAAAAAUAAQAIAAQAAAAAAAQAAQAIAAQAAAAAAAMAAQAIAAQAAAD//wMAAQAIAAQAAAD//wIAAQAIAAQAAAD//wEAAQAIAAQAAAD//wQAAQAIAAQAAAD//wUAAQAIAAQAAAD//wYAAQAIAAQAAAAAAAIAAQAIAAQAAAAAAAEAAQAIAAQAAAABAAEAAQAIAAQAAAACAAEAAQAIAAQAAAADAAEAAQAIAAQAAAAEAAEAAQAIAAQAAAAFAAEAAQAIAAQAAAAGAAEAAQAIAAQAAAAHAAEAAQAIAAQAAAAIAAEAAQAIAAQAAAAJAAEAAQAIAAQAAAAJAAIAAQAIAAQAAAAJAAMAAQAIAAQAAAAJAAQAAQAIAAQAAAAJAAUAAQAIAAQAAAAKAAUAAQAIAAQAAAALAAUAAQAIAAQAAAAMAAUAAQAIAAQAAAANAAUAAQAIAAQAAAAOAAUAAQAIAAQAAAAPAAUAAQAIAAQAAAAQAAUAAQAIAAQAAAARAAUAAQAIAAQAAAASAAcAAQAHAAQAAAASAAgAAQAHAAQAAAASAAkAAQAHAAQAAAASAAoAAQAJAAQAAAASAAsAAQAJAAQAAAARAAsAAQAIAAQAAAAQAAsAAQAIAAQAAAAPAAsAAQAIAAQAAAAOAAsAAQAIAAQAAAANAAsAAQAIAAQAAAAMAAsAAQAIAAQAAAALAAsAAQAIAAQAAAAKAAsAAQAIAAQAAAAJAAsAAQAIAAQAAAAIAAsAAQAIAAQAAAAHAAsAAQAIAAQAAAAGAAsAAQAIAAQAAAAFAAsAAQAIAAQAAAAFAAoAAQAIAAQAAAAEAAoAAQAIAAQAAAADAAoAAQAIAAQAAAACAAoAAQAIAAQAAAABAAoAAQAIAAQAAAABAAsAAQAIAAQAAAAAAAsAAQAIAAQAAAAAAAoAAQAIAAQAAAACAAsAAQAIAAQAAAADAAsAAQAIAAQAAAAEAAsAAQAIAAQAAAAAAAkAAQAIAAQAAAAAAAgAAQAIAAQAAAAAAAcAAQAIAAQAAAABAAQAAQAIAAQAAAABAAMAAQAIAAQAAAABAAIAAQAIAAQAAAACAAIAAQAIAAQAAAAGAAIAAQAIAAQAAAAHAAIAAQAIAAQAAAAIAAIAAQAIAAQAAAAHAAMAAQAIAAQAAAAGAAMAAQAIAAQAAAAFAAQAAQAHAAQAAAAEAAQAAQAHAAQAAAADAAQAAQAHAAQAAAACAAUAAQAIAAQAAAAGAAQAAQAIAAQAAAAGAAUAAQAIAAQAAAAFAAUAAQAHAAQAAAAEAAUAAQAHAAQAAAADAAUAAQAHAAQAAAAEAAMAAQAHAAQAAAAFAAMAAQAOAAIAAAADAAMAAQANAAIAAAACAAMAAQAIAAQAAAAIAAMAAQAIAAQAAAAIAAQAAQAIAAQAAAAIAAUAAQAIAAQAAAAJAAYAAQAIAAQAAAAJAAcAAQAHAAQAAAAJAAgAAQAHAAQAAAAIAAgAAQAHAAQAAAAIAAcAAQAHAAQAAAAIAAYAAQAIAAQAAAAKAAcAAQAHAAQAAAAKAAgAAQAHAAQAAAAJAAkAAQAHAAQAAAAKAAkAAQAHAAQAAAALAAgAAQAHAAQAAAAMAAgAAQAHAAQAAAAMAAcAAQAHAAQAAAALAAcAAQAHAAQAAAAMAAYAAQAIAAQAAAANAAYAAQAIAAQAAAALAAYAAQAIAAQAAAAKAAYAAQAIAAQAAAAOAAYAAQAIAAQAAAAPAAYAAQAIAAQAAAAQAAYAAQAIAAQAAAARAAYAAQAIAAQAAAARAAcAAQAHAAQAAAARAAgAAQAHAAQAAAARAAkAAQAHAAQAAAAQAAkAAQAHAAQAAAAPAAkAAQAHAAQAAAAOAAkAAQAHAAQAAAAOAAgAAQAHAAQAAAANAAgAAQAHAAQAAAAOAAcAAQAHAAQAAAAPAAcAAQAHAAQAAAAQAAcAAQAHAAQAAAAQAAgAAQAHAAQAAAANAAkAAQAHAAQAAAAMAAkAAQAHAAQAAAAPAAoAAQAIAAQAAAAOAAoAAQAIAAQAAAAQAAoAAQAIAAQAAAARAAoAAQAIAAQAAAANAAoAAQAIAAQAAAAMAAoAAQAIAAQAAAALAAoAAQAIAAQAAAAKAAoAAQAIAAQAAAAJAAoAAQAIAAQAAAALAAkAAQAHAAQAAAAIAAoAAQAIAAQAAAAHAAoAAQAIAAQAAAAGAAoAAQAIAAQAAAAFAAkAAQAHAAQAAAAGAAkAAQAHAAQAAAAHAAkAAQAHAAQAAAAIAAkAAQAHAAQAAAAEAAkAAQAHAAQAAAAEAAgAAQAHAAQAAAAFAAgAAQAHAAQAAAAGAAgAAQAHAAQAAAAHAAgAAQAHAAQAAAADAAkAAQANAAMAAAACAAkAAQAIAAQAAAABAAkAAQAIAAQAAAABAAgAAQAIAAQAAAACAAgAAQAIAAQAAAADAAcAAQAHAAQAAAAEAAcAAQAHAAQAAAAFAAcAAQAHAAQAAAAGAAcAAQAHAAQAAAADAAgAAQAHAAQAAAAEAAYAAQAHAAQAAAAFAAYAAQAHAAQAAAAGAAYAAQAPAAMAAAAHAAYAAQAIAAQAAAAHAAcAAQAHAAQAAAACAAcAAQAIAAQAAAACAAYAAQAIAAQAAAADAAYAAQAHAAQAAAAHAAUAAQAIAAQAAAAHAAQAAQAIAAQAAAABAAUAAQAIAAQAAAABAAYAAQAIAAQAAAACAAQAAQAIAAQAAAABAAcAAQAIAAQAAAAFAAIAAQAIAAQAAAAEAAIAAQAIAAQAAAADAAIAAQAIAAQAAAANAAcAAQAHAAQAAAAPAAgAAQAHAAQAAAASAP3/AQAJAAAAAAATAAEAAQAMAAEAAAATAAIAAQADAAIAAAAUAAEAAQARAAAAAAAUAAIAAQAKAAAAAAAUAAMAAQAKAAAAAAAUAAQAAQAKAAAAAAAUAAUAAQAKAAAAAAASAP7/AQAEAAIAAAASAP//AQAEAAIAAAASAAAAAQAEAAIAAAASAAEAAQAEAAIAAAASAAIAAQAEAAIAAAASAAMAAQAEAAMAAAATAP3/AQARAAAAAAATAP7/AQAKAAAAAAATAP//AQAKAAAAAAATAAAAAQAKAAAAAAASAAQAAQAJAAQAAAASAAUAAQAJAAQAAAASAAYAAQAJAAQAAAATAAoAAQAMAAAAAAAUAAoAAQAIAAAAAAAUAAYAAQAMAAEAAAATAAcAAQAHAAQAAAATAAgAAQAHAAQAAAATAAkAAQAHAAQAAAAUAAkAAQAHAAQAAAAUAAgAAQAHAAQAAAAUAAcAAQAHAAQAAAA=")
 tile_set = SubResource("TileSet_036b0")
 
-[node name="Trigger" type="Area2D" parent="."]
+[node name="Trigger" type="Area2D" parent="World" unique_id=1371180073]
 position = Vector2(812, 291)
 collision_layer = 0
 script = ExtResource("7_bowwu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Trigger" unique_id=1210252929]
 position = Vector2(9, 50)
 shape = SubResource("RectangleShape2D_qfnet")
 
-[node name="Player" parent="." instance=ExtResource("6_ah6xh")]
+[node name="NPC" type="StaticBody2D" parent="World" unique_id=371218245]
+position = Vector2(379, 43)
+script = ExtResource("6_uyab2")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/NPC" unique_id=1603796555]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_bedml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/NPC" unique_id=189637542]
+shape = SubResource("RectangleShape2D_anl3s")
+
+[node name="Camera" type="Camera2D" parent="World" unique_id=1170755297]
+limit_left = -160
+limit_top = -160
+limit_right = 800
+limit_bottom = 640
+
+[node name="Player" parent="World" unique_id=1152821066 instance=ExtResource("6_ah6xh")]
 position = Vector2(181, 151)
 collision_layer = 1
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_y77y4")]
+[node name="UI" parent="World" unique_id=1407451951 instance=ExtResource("4_y77y4")]
 
-[connection signal="body_entered" from="Trigger" to="Trigger" method="_on_body_entered"]
+[node name="Battle" type="Node2D" parent="." unique_id=1482677102]
+process_mode = 4
+script = ExtResource("12_aodyf")
+
+[node name="SFX" type="Node" parent="Battle" unique_id=1328283276]
+
+[node name="Music" type="AudioStreamPlayer" parent="Battle/SFX" unique_id=924997124]
+volume_db = -10.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Battle/SFX" unique_id=697532]
+volume_db = -10.0
+
+[node name="BattleUI" type="CanvasLayer" parent="Battle" unique_id=1218952200]
+visible = false
+script = ExtResource("9_aodyf")
+
+[node name="SFX" type="Node" parent="Battle/BattleUI" unique_id=43258789]
+
+[node name="Select" type="AudioStreamPlayer" parent="Battle/BattleUI/SFX" unique_id=1958113702]
+stream = ExtResource("6_cnxpv")
+
+[node name="Confirm" type="AudioStreamPlayer" parent="Battle/BattleUI/SFX" unique_id=399378272]
+stream = ExtResource("7_ml7un")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Battle/BattleUI/SFX" unique_id=34779032]
+volume_db = -5.0
+
+[node name="Stab" type="AudioStreamPlayer" parent="Battle/BattleUI/SFX" unique_id=1438894123]
+volume_db = -15.0
+
+[node name="Type" type="AudioStreamPlayer" parent="Battle/BattleUI/SFX" unique_id=1100604255]
+stream = ExtResource("8_teq4o")
+volume_db = 5.0
+
+[node name="Cover" type="ColorRect" parent="Battle/BattleUI" unique_id=727650789]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="BattleBoxOutline" type="Panel" parent="Battle/BattleUI" unique_id=431395006]
+offset_left = 32.0
+offset_top = 250.0
+offset_right = 607.0
+offset_bottom = 390.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_450ph")
+
+[node name="BattleBG" type="TextureRect" parent="Battle/BattleUI" unique_id=1704583015]
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 15.0
+offset_bottom = 9.0
+texture = ExtResource("9_jn4nm")
+
+[node name="Fight" type="TextureRect" parent="Battle/BattleUI" unique_id=1301569839]
+offset_left = 32.0
+offset_top = 432.0
+offset_right = 32.0
+offset_bottom = 432.0
+texture = ExtResource("14_aodyf")
+
+[node name="Act" type="TextureRect" parent="Battle/BattleUI" unique_id=12664042]
+offset_left = 185.0
+offset_top = 432.0
+offset_right = 185.0
+offset_bottom = 432.0
+texture = ExtResource("11_lj1cj")
+
+[node name="Item" type="TextureRect" parent="Battle/BattleUI" unique_id=2072593530]
+offset_left = 345.0
+offset_top = 432.0
+offset_right = 345.0
+offset_bottom = 432.0
+texture = ExtResource("12_uyab2")
+
+[node name="Mercy" type="TextureRect" parent="Battle/BattleUI" unique_id=752553101]
+offset_left = 500.0
+offset_top = 432.0
+offset_right = 500.0
+offset_bottom = 432.0
+texture = ExtResource("13_bedml")
+
+[node name="PlayerName" type="Label" parent="Battle/BattleUI" unique_id=1264112338]
+offset_left = 30.0
+offset_top = 400.0
+offset_right = 130.0
+offset_bottom = 424.0
+theme = ExtResource("14_anl3s")
+text = "Chara"
+
+[node name="PlayerLove" type="Label" parent="Battle/BattleUI" unique_id=865904128]
+offset_left = 132.0
+offset_top = 400.0
+offset_right = 209.0
+offset_bottom = 424.0
+theme = ExtResource("14_anl3s")
+text = "LV 1"
+
+[node name="PlayerHP" type="Label" parent="Battle/BattleUI" unique_id=1483695700]
+offset_left = 314.0
+offset_top = 400.0
+offset_right = 391.0
+offset_bottom = 424.0
+theme = ExtResource("14_anl3s")
+text = "10 / 20"
+
+[node name="PlayerHPBar" type="ProgressBar" parent="Battle/BattleUI" unique_id=55381902]
+offset_left = 275.0
+offset_top = 400.0
+offset_right = 300.0
+offset_bottom = 420.0
+size_flags_horizontal = 4
+theme = ExtResource("14_anl3s")
+max_value = 20.0
+step = 1.0
+value = 10.0
+allow_greater = true
+show_percentage = false
+
+[node name="HpImg" type="TextureRect" parent="Battle/BattleUI" unique_id=1422553801]
+offset_left = 244.0
+offset_top = 405.0
+offset_right = 244.0
+offset_bottom = 405.0
+texture = ExtResource("15_3vehu")
+
+[node name="Dialogue" type="RichTextLabel" parent="Battle/BattleUI" unique_id=1128778746 node_paths=PackedStringArray("typing_sound_player")]
+offset_left = 52.0
+offset_top = 269.0
+offset_right = 564.0
+offset_bottom = 371.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "* ABCDEFGHIIJKLMNOPQRSTUVWXYZ
+* abcdefghijklmnopqrstuvwxyz
+* 1234567890!?$@%&()"
+script = ExtResource("17_igcnr")
+typing_speed = 25.0
+typing_sound_player = NodePath("../SFX/Type")
+stop_after_character = true
+stop_duration = 0.2
+stop_characters = Array[String]([".", "!", "?", ","])
+metadata/_custom_type_script = "uid://bigcfyacvshrd"
+
+[node name="Option1" type="RichTextLabel" parent="Battle/BattleUI" unique_id=429703301]
+visible = false
+offset_left = 100.0
+offset_top = 278.0
+offset_right = 320.0
+offset_bottom = 310.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 1"
+
+[node name="Option2" type="RichTextLabel" parent="Battle/BattleUI" unique_id=95376777]
+visible = false
+offset_left = 356.0
+offset_top = 278.0
+offset_right = 576.0
+offset_bottom = 310.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 2"
+
+[node name="Option3" type="RichTextLabel" parent="Battle/BattleUI" unique_id=1560638246]
+visible = false
+offset_left = 100.0
+offset_top = 310.0
+offset_right = 320.0
+offset_bottom = 342.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 3"
+
+[node name="Option4" type="RichTextLabel" parent="Battle/BattleUI" unique_id=651787611]
+visible = false
+offset_left = 356.0
+offset_top = 310.0
+offset_right = 576.0
+offset_bottom = 342.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 4"
+
+[node name="Option5" type="RichTextLabel" parent="Battle/BattleUI" unique_id=374046487]
+visible = false
+offset_left = 100.0
+offset_top = 342.0
+offset_right = 320.0
+offset_bottom = 374.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 5"
+
+[node name="Option6" type="RichTextLabel" parent="Battle/BattleUI" unique_id=730981332]
+visible = false
+offset_left = 356.0
+offset_top = 342.0
+offset_right = 576.0
+offset_bottom = 374.0
+theme = ExtResource("16_3rbc8")
+bbcode_enabled = true
+text = "[code]* Option 6"
+
+[node name="Soul" parent="Battle/BattleUI" unique_id=917277600 instance=ExtResource("18_jn4nm")]
+position = Vector2(49, 454)
+
+[connection signal="body_entered" from="World/Trigger" to="World/Trigger" method="_on_body_entered"]

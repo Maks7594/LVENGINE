@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cahcgilwp18iv"]
+
+[ext_resource type="Script" uid="uid://dnxtjrqcjkhkd" path="res://scenes/npc.gd" id="1_abqhh"]
+[ext_resource type="Texture2D" uid="uid://b35f7etef2sg7" path="res://icon.svg" id="2_rv78h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n8xq"]
+size = Vector2(32, 32)
+
+[node name="NPC" type="StaticBody2D" unique_id=309834832]
+script = ExtResource("1_abqhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=732385644]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rv78h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1459117820]
+shape = SubResource("RectangleShape2D_7n8xq")
+debug_color = Color(1, 0, 0, 0.41960785)

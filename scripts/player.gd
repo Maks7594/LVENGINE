@@ -1,70 +1,71 @@
 extends CharacterBody2D
 
 @onready var sprite = $Sprite
-@onready var snd_confirm = $"../CanvasLayer/SFX/Confirm"
-@onready var snd_select = $"../CanvasLayer/SFX/Select"
-@onready var snd_item = $"../CanvasLayer/SFX/Item"
+@onready var snd_confirm = $"../UI/SFX/Confirm"
+@onready var snd_select = $"../UI/SFX/Select"
+@onready var snd_item = $"../UI/SFX/Item"
 
-@onready var ui = $"/root/CanvasLayer"
+@onready var raycast = $InteractionRaycast
+
+@onready var ui = $"/root/UI"
 
 var speed := 150.0
 var run_speed := 200.0
+var looking = Vector2.DOWN
+var interaction_distance := 20
 
 # This will store "x" or "y" to remember what we pressed first
 var face_priority = ""
 
-func ui_visibility(dont_hide:bool):
-	if dont_hide:
-		$"../CanvasLayer".visible = true
-		$"../CanvasLayer/QuickInfo".visible = true
-		$"../CanvasLayer/SubmenuSelector".visible = true
-		$"../CanvasLayer/Soul".visible = true
-	else:
-		$"../CanvasLayer".visible = false
-		$"../CanvasLayer/QuickInfo".visible = false
-		$"../CanvasLayer/SubmenuSelector".visible = false
-		$"../CanvasLayer/Soul".visible = false
+func update_raycast():
+	raycast.target_position = looking * interaction_distance
+
+func _input(event):
+	if Input.is_key_pressed(KEY_F1):
+		PlayerData.player["hp"] = 5
+	elif Input.is_key_pressed(KEY_F2):
+		PlayerData.player["hp"] = 10
+	elif Input.is_key_pressed(KEY_F3):
+		PlayerData.player["hp"] = 20
 	
-	$"../CanvasLayer".update_ui()
+	if event.is_action_pressed("confirm"):
+		if raycast.is_colliding():
+			var target = raycast.get_collider()
+			if target.has_method("interact"):
+				print("running method")
+				target.interact()
 
 func _physics_process(_delta: float):
+	if PlayerData.global["cam_active"]:
+		if not $"../Camera" == null:
+			$"../Camera".position.x = lerp($"../Camera".position.x, position.x, 0.1)
+			$"../Camera".position.y = lerp($"../Camera".position.y, position.y, 0.1)
 	if PlayerData.global["interact"]:
-		var x := Input.get_axis("left", "right")
-		var y := Input.get_axis("up", "down")
+		var v = Vector2.ZERO
+		v.x = Input.get_axis("left", "right")
+		v.y = Input.get_axis("up", "down")
+		
+		if v != Vector2.ZERO:
+			looking = v
+			update_raycast()
 		
 		if face_priority == "":
-			if x != 0: face_priority = "x"
-			elif y != 0: face_priority = "y"
+			if v.x != 0: face_priority = "x"
+			elif v.y != 0: face_priority = "y"
 		
-		if x != 0 and y == 0:
+		if v.x != 0 and v.y == 0:
 			face_priority = "x"
-		elif y != 0 and x == 0:
+		elif v.y != 0 and v.x == 0:
 			face_priority = "y"
 		
-		if x == 0 and y == 0:
+		if v.x == 0 and v.y == 0:
 			face_priority = ""
 	
-		velocity.x = x * speed
-		velocity.y = y * speed
+		velocity.x = v.x * speed
+		velocity.y = v.y * speed
 	
 		move_and_slide()
-		update_animation(x, y)
-		
-		if Input.is_action_just_pressed("menu"):
-			ui_visibility(true)
-			Funcs.do_sound(snd_select)
-			PlayerData.global["interact"] = false
-			PlayerData.global["menu_open"] = true
-		if Input.is_action_just_pressed("ui_home"):
-			$"../CanvasLayer".visible = true
-			$"../CanvasLayer/Textbox".visible = true
-			$"../CanvasLayer/Textbox/TypeWriterLabel".typewrite($"../CanvasLayer/Textbox/TypeWriterLabel".text)
-		if Input.is_key_pressed(KEY_F1):
-			PlayerData.player["hp"] = 5
-		elif Input.is_key_pressed(KEY_F2):
-			PlayerData.player["hp"] = 10
-		elif Input.is_key_pressed(KEY_F3):
-			PlayerData.player["hp"] = 20
+		update_animation(v.x, v.y)
 	else:
 		return
 

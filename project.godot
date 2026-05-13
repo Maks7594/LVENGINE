@@ -8,15 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="LVENGINE"
 config/description="Leading Brand \"LVENGINE\"-Type Software"
 run/main_scene="res://scenes/warning_menu.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/use_custom_user_dir=true
+config/custom_user_dir_name="LVENGINE"
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/image="uid://bouatef2s8e3f"
 config/icon="uid://yc3rtkfj4cp5"
 config/macos_native_icon="uid://yc3rtkfj4cp5"
@@ -26,6 +32,7 @@ config/macos_native_icon="uid://yc3rtkfj4cp5"
 PlayerVars="*res://scripts/playervars.gd"
 PlayerData="*res://scripts/playerdata.gd"
 Funcs="*res://scripts/functions.gd"
+lang="*uid://cjgh35f26qdj"
 
 [display]
 
@@ -40,6 +47,10 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/type_writer_label/plugin.cfg")
+
+[gui]
+
+common/snap_controls_to_pixels=false
 
 [input]
 

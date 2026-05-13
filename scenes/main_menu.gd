@@ -68,7 +68,7 @@ func do_confirm():
 	if not in_settings:
 		if selection == 0:
 			Funcs.do_sound(snd_confirm)
-			get_tree().change_scene_to_file("res://scenes/rooms/room0.tscn")
+			get_tree().change_scene_to_file("res://scenes/rooms/room0	.tscn")
 		elif selection == 1:
 			Funcs.do_sound(snd_confirm)
 			settings_toggle()

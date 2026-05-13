@@ -14,8 +14,8 @@ var player = {
 	"equip_df": 0,
 	"at_boost": 0,
 	"df_boost": 0,
-	"total_at": "base_at" + "equip_at" + "at_boost",
-	"total_df": "base_def" + "equip_df" + "df_boost",
+	"total_at": 0,
+	"total_df": 0,
 	
 	"gold": 0,
 	
@@ -29,6 +29,7 @@ var player = {
 		"monster_candy",
 		"monster_candy"
 	],
+	
 	"equipped": [
 		"stick",
 		"bandage"
@@ -61,7 +62,12 @@ var stats = {
 	20: [99, 38, 4]
 }
 
-var camLimit = Vector2()
+var global = {
+	"interact": true,
+	"menu_open": false,
+	"in_battle": false,
+	"cam_active": true
+}
 
 func get_item_data(item: String, data: String):
 	var path = "res://data/items/%s.tres" % item
@@ -75,8 +81,6 @@ func get_item_data(item: String, data: String):
 	return "Unknown"
 
 func recalc_stats(love:int):
-	player["love"] = love
-	
 	var stats = get_stats(love)
 	
 	player["max_hp"] = stats[0]
@@ -98,8 +102,3 @@ func get_stats(love:int):
 	var df = stats[love][2]
 	
 	return [hp, at, df]
-
-var global = {
-	"interact": true,
-	"menu_open": false,
-}

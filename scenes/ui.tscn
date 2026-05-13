@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bko45l6cmd0ou"]
+[gd_scene format=3 uid="uid://bko45l6cmd0ou"]
 
 [ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="1_27fn8"]
 [ext_resource type="Script" uid="uid://cw3dnc8h7gt7b" path="res://scenes/ui.gd" id="1_nltto"]
@@ -11,29 +11,24 @@
 [ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="5_waa4j"]
 [ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="6_ok7cu"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=337072073]
 script = ExtResource("1_nltto")
 
-[node name="Overlay" type="ColorRect" parent="."]
-offset_right = 640.0
-offset_bottom = 480.0
-color = Color(0, 0, 0, 0)
+[node name="SFX" type="Node" parent="." unique_id=1233208668]
 
-[node name="SFX" type="Node" parent="."]
-
-[node name="Confirm" type="AudioStreamPlayer" parent="SFX"]
+[node name="Confirm" type="AudioStreamPlayer" parent="SFX" unique_id=1109612413]
 stream = ExtResource("2_7dvkv")
 volume_db = -5.0
 
-[node name="Item" type="AudioStreamPlayer" parent="SFX"]
+[node name="Item" type="AudioStreamPlayer" parent="SFX" unique_id=87216381]
 stream = ExtResource("3_vdcm2")
 volume_db = -5.0
 
-[node name="Select" type="AudioStreamPlayer" parent="SFX"]
+[node name="Select" type="AudioStreamPlayer" parent="SFX" unique_id=732693236]
 stream = ExtResource("4_6rmj2")
 volume_db = -5.0
 
-[node name="QuickInfo" type="ColorRect" parent="."]
+[node name="QuickInfo" type="ColorRect" parent="." unique_id=1511549040]
 visible = false
 offset_left = 32.0
 offset_top = 52.0
@@ -41,30 +36,30 @@ offset_right = 174.0
 offset_bottom = 162.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="QuickInfo"]
+[node name="left" type="ColorRect" parent="QuickInfo" unique_id=1775963869]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 104.0
 
-[node name="right" type="ColorRect" parent="QuickInfo"]
+[node name="right" type="ColorRect" parent="QuickInfo" unique_id=724266889]
 layout_mode = 0
 offset_left = 136.0
 offset_top = 5.999998
 offset_right = 142.0
 offset_bottom = 104.0
 
-[node name="up" type="ColorRect" parent="QuickInfo"]
+[node name="up" type="ColorRect" parent="QuickInfo" unique_id=378131642]
 layout_mode = 0
 offset_right = 142.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="QuickInfo"]
+[node name="down" type="ColorRect" parent="QuickInfo" unique_id=1039269642]
 layout_mode = 0
 offset_top = 103.99999
 offset_right = 142.0
 offset_bottom = 109.99999
 
-[node name="PlayerName" type="Label" parent="QuickInfo"]
+[node name="PlayerName" type="Label" parent="QuickInfo" unique_id=637186548]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 8.0
@@ -73,7 +68,7 @@ offset_bottom = 40.0
 theme = ExtResource("1_27fn8")
 text = "Chara"
 
-[node name="LV" type="Label" parent="QuickInfo"]
+[node name="LV" type="Label" parent="QuickInfo" unique_id=921823852]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 46.0
@@ -83,7 +78,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "LV"
 
-[node name="HP" type="Label" parent="QuickInfo"]
+[node name="HP" type="Label" parent="QuickInfo" unique_id=32089615]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 64.0
@@ -93,7 +88,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "HP"
 
-[node name="G" type="Label" parent="QuickInfo"]
+[node name="G" type="Label" parent="QuickInfo" unique_id=1578537507]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 82.0
@@ -103,7 +98,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "G"
 
-[node name="LoveValue" type="Label" parent="QuickInfo"]
+[node name="LoveValue" type="Label" parent="QuickInfo" unique_id=1142082511]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 46.0
@@ -113,7 +108,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "1"
 
-[node name="HPValue" type="Label" parent="QuickInfo"]
+[node name="HPValue" type="Label" parent="QuickInfo" unique_id=2021197957]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 64.0
@@ -123,7 +118,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "20/20"
 
-[node name="GValue" type="Label" parent="QuickInfo"]
+[node name="GValue" type="Label" parent="QuickInfo" unique_id=1704727178]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 82.0
@@ -133,7 +128,7 @@ theme = ExtResource("2_nltto")
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="SubmenuSelector" type="ColorRect" parent="."]
+[node name="SubmenuSelector" type="ColorRect" parent="." unique_id=1876145029]
 visible = false
 offset_left = 32.0
 offset_top = 168.0
@@ -141,30 +136,30 @@ offset_right = 174.0
 offset_bottom = 316.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="SubmenuSelector"]
+[node name="left" type="ColorRect" parent="SubmenuSelector" unique_id=1784117148]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 142.0
 
-[node name="right" type="ColorRect" parent="SubmenuSelector"]
+[node name="right" type="ColorRect" parent="SubmenuSelector" unique_id=482912254]
 layout_mode = 0
 offset_left = 136.0
 offset_top = 5.999998
 offset_right = 142.0
 offset_bottom = 142.0
 
-[node name="up" type="ColorRect" parent="SubmenuSelector"]
+[node name="up" type="ColorRect" parent="SubmenuSelector" unique_id=1711943704]
 layout_mode = 0
 offset_right = 142.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="SubmenuSelector"]
+[node name="down" type="ColorRect" parent="SubmenuSelector" unique_id=692028988]
 layout_mode = 0
 offset_top = 142.0
 offset_right = 142.0
 offset_bottom = 148.0
 
-[node name="Item" type="Label" parent="SubmenuSelector"]
+[node name="Item" type="Label" parent="SubmenuSelector" unique_id=224261488]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 20.0
@@ -173,7 +168,7 @@ offset_bottom = 52.0
 theme = ExtResource("1_27fn8")
 text = "ITEM"
 
-[node name="Stat" type="Label" parent="SubmenuSelector"]
+[node name="Stat" type="Label" parent="SubmenuSelector" unique_id=1054415220]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 56.0
@@ -182,7 +177,7 @@ offset_bottom = 88.0
 theme = ExtResource("1_27fn8")
 text = "STAT"
 
-[node name="Cell" type="Label" parent="SubmenuSelector"]
+[node name="Cell" type="Label" parent="SubmenuSelector" unique_id=460367840]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 92.0
@@ -191,7 +186,7 @@ offset_bottom = 124.0
 theme = ExtResource("1_27fn8")
 text = "CELL"
 
-[node name="Textbox" type="ColorRect" parent="."]
+[node name="Textbox" type="ColorRect" parent="." unique_id=1027139258]
 visible = false
 offset_left = 32.0
 offset_top = 320.0
@@ -199,30 +194,30 @@ offset_right = 608.0
 offset_bottom = 472.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="Textbox"]
+[node name="left" type="ColorRect" parent="Textbox" unique_id=986095684]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 146.0
 
-[node name="right" type="ColorRect" parent="Textbox"]
+[node name="right" type="ColorRect" parent="Textbox" unique_id=663167506]
 layout_mode = 0
 offset_left = 570.0
 offset_top = 5.999998
 offset_right = 576.0
 offset_bottom = 146.0
 
-[node name="up" type="ColorRect" parent="Textbox"]
+[node name="up" type="ColorRect" parent="Textbox" unique_id=1275148846]
 layout_mode = 0
 offset_right = 576.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="Textbox"]
+[node name="down" type="ColorRect" parent="Textbox" unique_id=105624694]
 layout_mode = 0
 offset_top = 146.0
 offset_right = 576.0
 offset_bottom = 152.0
 
-[node name="TypeWriterLabel" type="RichTextLabel" parent="Textbox" node_paths=PackedStringArray("typing_sound_player")]
+[node name="TypeWriterLabel" type="RichTextLabel" parent="Textbox" unique_id=1951067203 node_paths=PackedStringArray("typing_sound_player")]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 20.0
@@ -234,10 +229,10 @@ typing_speed = 30.0
 typing_sound_player = NodePath("../TypeSound")
 metadata/_custom_type_script = "uid://bigcfyacvshrd"
 
-[node name="TypeSound" type="AudioStreamPlayer" parent="Textbox"]
+[node name="TypeSound" type="AudioStreamPlayer" parent="Textbox" unique_id=728716362]
 stream = ExtResource("6_ok7cu")
 
-[node name="Inventory" type="ColorRect" parent="."]
+[node name="Inventory" type="ColorRect" parent="." unique_id=1465968010]
 visible = false
 offset_left = 188.0
 offset_top = 52.0
@@ -245,30 +240,30 @@ offset_right = 534.0
 offset_bottom = 470.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="Inventory"]
+[node name="left" type="ColorRect" parent="Inventory" unique_id=995083319]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 412.0
 
-[node name="right" type="ColorRect" parent="Inventory"]
+[node name="right" type="ColorRect" parent="Inventory" unique_id=2009650780]
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.999998
 offset_right = 346.0
 offset_bottom = 412.0
 
-[node name="up" type="ColorRect" parent="Inventory"]
+[node name="up" type="ColorRect" parent="Inventory" unique_id=2111093769]
 layout_mode = 0
 offset_right = 346.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="Inventory"]
+[node name="down" type="ColorRect" parent="Inventory" unique_id=1694304044]
 layout_mode = 0
 offset_top = 412.0
 offset_right = 346.0
 offset_bottom = 418.0
 
-[node name="Item1" type="Label" parent="Inventory"]
+[node name="Item1" type="Label" parent="Inventory" unique_id=250730546]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 28.0
@@ -277,7 +272,7 @@ offset_bottom = 60.0
 theme = ExtResource("1_27fn8")
 text = "Item1"
 
-[node name="Item2" type="Label" parent="Inventory"]
+[node name="Item2" type="Label" parent="Inventory" unique_id=1357589810]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 60.0
@@ -286,7 +281,7 @@ offset_bottom = 92.0
 theme = ExtResource("1_27fn8")
 text = "Item2"
 
-[node name="Item3" type="Label" parent="Inventory"]
+[node name="Item3" type="Label" parent="Inventory" unique_id=1775664760]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 92.0
@@ -295,7 +290,7 @@ offset_bottom = 124.0
 theme = ExtResource("1_27fn8")
 text = "Item3"
 
-[node name="Item4" type="Label" parent="Inventory"]
+[node name="Item4" type="Label" parent="Inventory" unique_id=555932061]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 124.0
@@ -304,7 +299,7 @@ offset_bottom = 156.0
 theme = ExtResource("1_27fn8")
 text = "Item4"
 
-[node name="Item5" type="Label" parent="Inventory"]
+[node name="Item5" type="Label" parent="Inventory" unique_id=902333601]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 156.0
@@ -313,7 +308,7 @@ offset_bottom = 188.0
 theme = ExtResource("1_27fn8")
 text = "Item5"
 
-[node name="Item6" type="Label" parent="Inventory"]
+[node name="Item6" type="Label" parent="Inventory" unique_id=1493655942]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 188.0
@@ -322,7 +317,7 @@ offset_bottom = 220.0
 theme = ExtResource("1_27fn8")
 text = "Item6"
 
-[node name="Item7" type="Label" parent="Inventory"]
+[node name="Item7" type="Label" parent="Inventory" unique_id=807026300]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 220.0
@@ -331,7 +326,7 @@ offset_bottom = 252.0
 theme = ExtResource("1_27fn8")
 text = "Item7"
 
-[node name="Item8" type="Label" parent="Inventory"]
+[node name="Item8" type="Label" parent="Inventory" unique_id=794783936]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 252.0
@@ -340,7 +335,7 @@ offset_bottom = 284.0
 theme = ExtResource("1_27fn8")
 text = "Item8"
 
-[node name="Use" type="Label" parent="Inventory"]
+[node name="Use" type="Label" parent="Inventory" unique_id=172939174]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 364.0
@@ -349,7 +344,7 @@ offset_bottom = 396.0
 theme = ExtResource("1_27fn8")
 text = "USE"
 
-[node name="Info" type="Label" parent="Inventory"]
+[node name="Info" type="Label" parent="Inventory" unique_id=1670477588]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 364.0
@@ -358,7 +353,7 @@ offset_bottom = 396.0
 theme = ExtResource("1_27fn8")
 text = "INFO"
 
-[node name="Drop" type="Label" parent="Inventory"]
+[node name="Drop" type="Label" parent="Inventory" unique_id=197008820]
 layout_mode = 0
 offset_left = 254.0
 offset_top = 364.0
@@ -367,7 +362,7 @@ offset_bottom = 396.0
 theme = ExtResource("1_27fn8")
 text = "DROP"
 
-[node name="Statistics" type="ColorRect" parent="."]
+[node name="Statistics" type="ColorRect" parent="." unique_id=1085687451]
 visible = false
 offset_left = 188.0
 offset_top = 52.0
@@ -375,30 +370,30 @@ offset_right = 534.0
 offset_bottom = 470.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="Statistics"]
+[node name="left" type="ColorRect" parent="Statistics" unique_id=2049406713]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 412.0
 
-[node name="right" type="ColorRect" parent="Statistics"]
+[node name="right" type="ColorRect" parent="Statistics" unique_id=2120124297]
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.999998
 offset_right = 346.0
 offset_bottom = 412.0
 
-[node name="up" type="ColorRect" parent="Statistics"]
+[node name="up" type="ColorRect" parent="Statistics" unique_id=1045196199]
 layout_mode = 0
 offset_right = 346.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="Statistics"]
+[node name="down" type="ColorRect" parent="Statistics" unique_id=1072503300]
 layout_mode = 0
 offset_top = 412.0
 offset_right = 346.0
 offset_bottom = 418.0
 
-[node name="Name" type="Label" parent="Statistics"]
+[node name="Name" type="Label" parent="Statistics" unique_id=1176838861]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 32.0
@@ -407,7 +402,7 @@ offset_bottom = 64.0
 theme = ExtResource("1_27fn8")
 text = "\"Chara\""
 
-[node name="LV" type="Label" parent="Statistics"]
+[node name="LV" type="Label" parent="Statistics" unique_id=269846214]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 88.0
@@ -416,7 +411,7 @@ offset_bottom = 120.0
 theme = ExtResource("1_27fn8")
 text = "LV 1"
 
-[node name="HP" type="Label" parent="Statistics"]
+[node name="HP" type="Label" parent="Statistics" unique_id=407570733]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 120.0
@@ -425,7 +420,7 @@ offset_bottom = 152.0
 theme = ExtResource("1_27fn8")
 text = "HP 20 / 20"
 
-[node name="AT" type="Label" parent="Statistics"]
+[node name="AT" type="Label" parent="Statistics" unique_id=858285306]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 184.0
@@ -434,7 +429,7 @@ offset_bottom = 216.0
 theme = ExtResource("1_27fn8")
 text = "AT 0 (0)"
 
-[node name="DF" type="Label" parent="Statistics"]
+[node name="DF" type="Label" parent="Statistics" unique_id=853876906]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 216.0
@@ -443,7 +438,7 @@ offset_bottom = 248.0
 theme = ExtResource("1_27fn8")
 text = "DF 0 (0)"
 
-[node name="EXP" type="Label" parent="Statistics"]
+[node name="EXP" type="Label" parent="Statistics" unique_id=1748560109]
 layout_mode = 0
 offset_left = 188.0
 offset_top = 184.0
@@ -452,7 +447,7 @@ offset_bottom = 216.0
 theme = ExtResource("1_27fn8")
 text = "EXP: 0"
 
-[node name="NEXT" type="Label" parent="Statistics"]
+[node name="NEXT" type="Label" parent="Statistics" unique_id=905098434]
 layout_mode = 0
 offset_left = 188.0
 offset_top = 216.0
@@ -461,7 +456,7 @@ offset_bottom = 248.0
 theme = ExtResource("1_27fn8")
 text = "NEXT: 10"
 
-[node name="Weapon" type="Label" parent="Statistics"]
+[node name="Weapon" type="Label" parent="Statistics" unique_id=1836276610]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 276.0
@@ -470,7 +465,7 @@ offset_bottom = 308.0
 theme = ExtResource("1_27fn8")
 text = "WEAPON: Stick"
 
-[node name="Armor" type="Label" parent="Statistics"]
+[node name="Armor" type="Label" parent="Statistics" unique_id=395853459]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 308.0
@@ -479,7 +474,7 @@ offset_bottom = 340.0
 theme = ExtResource("1_27fn8")
 text = "ARMOR: Bandage"
 
-[node name="Gold" type="Label" parent="Statistics"]
+[node name="Gold" type="Label" parent="Statistics" unique_id=1456556907]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 348.0
@@ -488,7 +483,7 @@ offset_bottom = 380.0
 theme = ExtResource("1_27fn8")
 text = "GOLD: 0"
 
-[node name="Cellphone" type="ColorRect" parent="."]
+[node name="Cellphone" type="ColorRect" parent="." unique_id=1671182480]
 visible = false
 offset_left = 188.0
 offset_top = 52.0
@@ -496,30 +491,48 @@ offset_right = 534.0
 offset_bottom = 470.0
 color = Color(0, 0, 0, 1)
 
-[node name="left" type="ColorRect" parent="Cellphone"]
+[node name="left" type="ColorRect" parent="Cellphone" unique_id=1064367633]
 layout_mode = 0
 offset_right = 6.0
 offset_bottom = 412.0
 
-[node name="right" type="ColorRect" parent="Cellphone"]
+[node name="right" type="ColorRect" parent="Cellphone" unique_id=506572252]
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.999998
 offset_right = 346.0
 offset_bottom = 412.0
 
-[node name="up" type="ColorRect" parent="Cellphone"]
+[node name="up" type="ColorRect" parent="Cellphone" unique_id=386520735]
 layout_mode = 0
 offset_right = 346.0
 offset_bottom = 6.0
 
-[node name="down" type="ColorRect" parent="Cellphone"]
+[node name="down" type="ColorRect" parent="Cellphone" unique_id=390831337]
 layout_mode = 0
 offset_top = 412.0
 offset_right = 346.0
 offset_bottom = 418.0
 
-[node name="Soul" type="TextureRect" parent="."]
+[node name="Battle" type="Node2D" parent="." unique_id=1984221743]
+visible = false
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=923930859]
+visible = false
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="Soul" type="TextureRect" parent="." unique_id=1573497875]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 56.0
+offset_top = 196.0
+offset_right = 74.0
+offset_bottom = 214.0
+texture = ExtResource("3_ibotj")
+
+[node name="CosmeticSoul" type="TextureRect" parent="." unique_id=864691822]
 visible = false
 self_modulate = Color(1, 0, 0, 1)
 offset_left = 56.0

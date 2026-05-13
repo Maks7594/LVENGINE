@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkimfhoh8m06p"]
+[gd_scene format=3 uid="uid://dkimfhoh8m06p"]
 
 [ext_resource type="Script" uid="uid://comft4s1qimg0" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://pukk502y5ya8" path="res://images/frisk.png" id="2_qhqgy"]
@@ -113,22 +113,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(19, 13)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1499741422]
 scale = Vector2(2, 2)
 collision_layer = 0
 script = ExtResource("1_g2els")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1131428734]
 position = Vector2(0.5, 0)
 sprite_frames = SubResource("SpriteFrames_2u3nc")
 animation = &"down"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1235228201]
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="Camera" type="Camera2D" parent="."]
-limit_left = -160
-limit_top = -160
-limit_right = 800
-limit_bottom = 640
+[node name="InteractionRaycast" type="RayCast2D" parent="." unique_id=157370579]
+position = Vector2(0, 8.5)
+target_position = Vector2(0, 20)

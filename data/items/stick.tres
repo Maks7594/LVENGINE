@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bpcyjtcwbvtn7"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bpcyjtcwbvtn7"]
 
 [ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_k7004"]
 
@@ -7,7 +7,7 @@ script = ExtResource("1_k7004")
 name = "Stick"
 info = "* Its bark is worse than its bite."
 on_use = "* You threw the stick away.\\n* Then picked it back up."
+consumable = false
 full_heal = false
-cant_equip_msg = "* You threw the stick away.\\n* Then picked it back up."
 is_weapon = true
 metadata/_custom_type_script = "uid://dhmgh4wuda7go"

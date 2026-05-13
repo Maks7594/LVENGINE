@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://fo2xmw3i6pdd"]
+
+[ext_resource type="Script" uid="uid://cmquxn4e1ibdi" path="res://scenes/soul.gd" id="1_jnmxf"]
+[ext_resource type="Texture2D" uid="uid://c0pqnt43etk8r" path="res://images/soul.png" id="2_jnmxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(14, 14)
+
+[node name="Soul" type="CharacterBody2D" unique_id=917277600]
+collision_layer = 0
+script = ExtResource("1_jnmxf")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1233256427]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_jnmxf")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=551930478]
+shape = SubResource("RectangleShape2D_aqk2v")
+debug_color = Color(0.9490196, 1, 1, 0.41960785)

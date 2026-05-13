@@ -7,7 +7,8 @@ var settings = {
 	"max_fps": 30,
 	"music": true,
 	"sfx": true,
-	"bigger_window": true
+	"bigger_window": true,
+	"locale": "pl_pl"
 }
 
 func save_settings():

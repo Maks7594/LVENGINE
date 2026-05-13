@@ -4,7 +4,7 @@ extends Resource
 class_name Item
 
 @export_group("Information")
-## The name of the item.
+## The translation string of the item.
 @export var name := "Test Item"
 ## Description of the item (displayed via INFO in inventory)
 @export var info := "* A square box with dev textures. Heals 20HP."
