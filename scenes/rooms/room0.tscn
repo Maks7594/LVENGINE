@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://bg2er5x4vv0gn"]
 
 [ext_resource type="Script" uid="uid://bapdqtr4pl8nu" path="res://scenes/rooms/room0.gd" id="1_bqk7w"]
+[ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="2_bedml"]
 [ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="2_teq4o"]
+[ext_resource type="Script" uid="uid://bd68soi3w3djt" path="res://scripts/debug_label.gd" id="3_anl3s"]
 [ext_resource type="AudioStream" uid="uid://rvnao1yacpss" path="res://sounds/enterbattle.wav" id="3_jn4nm"]
 [ext_resource type="PackedScene" uid="uid://bko45l6cmd0ou" path="res://scenes/ui.tscn" id="4_y77y4"]
 [ext_resource type="Texture2D" uid="uid://crdjuojolivf3" path="res://images/ruins.png" id="5_fkshr"]
@@ -14,7 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="8_teq4o"]
 [ext_resource type="Script" uid="uid://df80nnpf2pmvu" path="res://scenes/rooms/battle_ui_manager.gd" id="9_aodyf"]
 [ext_resource type="Texture2D" uid="uid://clauurbupdmyg" path="res://images/battle/battlebg.png" id="9_jn4nm"]
+[ext_resource type="Script" uid="uid://w3ijw6lkcdv1" path="res://scenes/rooms/gaster.gd" id="10_igcnr"]
+[ext_resource type="Texture2D" uid="uid://i87fghhh5wa6" path="res://images/gaster.png" id="11_4dlwq"]
 [ext_resource type="Texture2D" uid="uid://cy24yuvgkbc33" path="res://images/battle/1.png" id="11_lj1cj"]
+[ext_resource type="AudioStream" uid="uid://cmwt7kajubn75" path="res://sounds/snd_mysterygo.wav" id="12_450ph"]
 [ext_resource type="Script" uid="uid://dphxss7ck54ji" path="res://scripts/battle_manager.gd" id="12_aodyf"]
 [ext_resource type="Texture2D" uid="uid://b6hxkbfbv401g" path="res://images/battle/2.png" id="12_uyab2"]
 [ext_resource type="Texture2D" uid="uid://g3e30eso56lv" path="res://images/battle/3.png" id="13_bedml"]
@@ -331,6 +336,36 @@ size = Vector2(38, 120)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anl3s"]
 size = Vector2(64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7wvh"]
+atlas = ExtResource("11_4dlwq")
+region = Rect2(0, 0, 21, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehfjq"]
+atlas = ExtResource("11_4dlwq")
+region = Rect2(24, 0, 21, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mecmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7wvh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehfjq")
+}],
+"loop": true,
+"name": &"disappear",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igcnr"]
+size = Vector2(38, 38)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_450ph"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
@@ -341,6 +376,16 @@ border_color = Color(1, 1, 1, 1)
 
 [node name="Room" type="Node2D" unique_id=1869159602]
 script = ExtResource("1_bqk7w")
+
+[node name="DebugUI" type="CanvasLayer" parent="." unique_id=1847305252]
+visible = false
+
+[node name="Label" type="Label" parent="DebugUI" unique_id=1155950249]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_bedml")
+text = "debug stuff here"
+script = ExtResource("3_anl3s")
 
 [node name="SFX" type="Node" parent="." unique_id=314723594]
 
@@ -379,6 +424,23 @@ texture = ExtResource("7_bedml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/NPC" unique_id=189637542]
 shape = SubResource("RectangleShape2D_anl3s")
+
+[node name="Gaster" type="StaticBody2D" parent="World" unique_id=1721444532]
+position = Vector2(-24, 46)
+script = ExtResource("10_igcnr")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="World/Gaster" unique_id=2007830103]
+position = Vector2(-12, -37)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mecmk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Gaster" unique_id=853613422]
+position = Vector2(-12, -3)
+shape = SubResource("RectangleShape2D_igcnr")
+
+[node name="SFX" type="AudioStreamPlayer" parent="World/Gaster" unique_id=2066138258]
+stream = ExtResource("12_450ph")
+volume_db = -5.0
 
 [node name="Camera" type="Camera2D" parent="World" unique_id=1170755297]
 limit_left = -160

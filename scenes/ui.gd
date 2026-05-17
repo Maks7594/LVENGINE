@@ -59,8 +59,6 @@ var submenu := 0
 # 3 - statistics
 # 4 - cellphone
 
-var more_text := false
-
 func _ready():
 	update_ui()
 
@@ -113,12 +111,14 @@ func generate_info_text(sel_item):
 
 	return '* "%s" - %s\n%s' % [item_name, stat_text, item_info]
 
-func do_text(text: String):
+var textbox_done := false
+
+func do_textbox(text: String):
 	PlayerData.global["interact"] = false
 	textbox.visible = true
 	typewriter.typewrite(text)
 
-func tekst(text:String):
+func tekst(text: String):
 	PlayerData.global["menu_open"] = false
 	PlayerData.recalc_stats(PlayerData.player["love"])
 	update_ui()
@@ -137,75 +137,67 @@ func vis_all(show:bool):
 		quickinfo.visible = true
 		submenu_selector.visible = true
 		soul.visible = true
-		visible = true
 	else:
 		quickinfo.visible = false
 		submenu_selector.visible = false
 		soul.visible = false
-		visible = false
 
-func _physics_process(_delta):
-	# textbox test
-	if textbox.visible:
-		if typewriter.is_typing():
-			if Input.is_action_just_pressed("cancel"):
-				typewriter.skip_typing()
-		if not typewriter.is_typing() and Input.is_action_just_pressed("confirm"):
-			if not more_text:
-				textbox.visible = false
-				vis_all(false)
-				PlayerData.global["menu_open"] = false
-				PlayerData.global["interact"] = true
-				selection = 0
-				submenu = 0
-			else:
-				pass #TODO: implement. god this will be so hard
+func _on_typewriting_done():
+	textbox_done = true
+
+func _input(event):
 	if not PlayerData.global["menu_open"] and PlayerData.global["interact"]:
-		if Input.is_action_just_pressed("menu"):
+		if event.is_action_pressed("menu"):
+			update_ui()
 			vis_all(true)
 			Funcs.do_sound(snd_select)
 			PlayerData.global["interact"] = false
 			PlayerData.global["menu_open"] = true
 	if PlayerData.global["menu_open"] and not PlayerData.global["interact"]:
 		if submenu == 0:
-			if Input.is_action_just_pressed("down"):
+			if event.is_action_pressed("down"):
 				selection = (selection + 1 + 3) % 3
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("up"):
+			elif event.is_action_pressed("up"):
 				selection = (selection - 1 + 3) % 3
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("confirm"):
+			elif event.is_action_pressed("confirm"):
 				do_confirm()
-			elif Input.is_action_just_pressed("cancel"):
+			elif event.is_action_pressed("cancel"):
 				PlayerData.global["menu_open"] = false
 				PlayerData.global["interact"] = true
 				vis_all(false)
 				selection = 0
 		elif submenu == 1:
-			if Input.is_action_just_pressed("down"):
+			if event.is_action_pressed("down"):
 				selection = (selection + 1 + 8) % 8
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("up"):
+			elif event.is_action_pressed("up"):
 				selection = (selection - 1 + 8) % 8
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("confirm"):
+			elif event.is_action_pressed("confirm"):
 				do_confirm()
-			if Input.is_action_just_pressed("cancel"):
+			if event.is_action_pressed("cancel"):
+				select(buttons[0])
+				selection = 0
 				do_submenu(1, true)
+				Funcs.do_sound(snd_select)
 		elif submenu == 2:
-			if Input.is_action_just_pressed("left"):
+			if event.is_action_pressed("left"):
 				selection = (selection - 1 + 3) % 3
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("right"):
+			elif event.is_action_pressed("right"):
 				selection = (selection + 1 + 3) % 3
 				Funcs.do_sound(snd_select)
-			elif Input.is_action_just_pressed("confirm"):
+			elif event.is_action_pressed("confirm"):
 				do_confirm()
-			if Input.is_action_just_pressed("cancel"):
+			if event.is_action_pressed("cancel"):
 				do_submenu(2, true)
+				Funcs.do_sound(snd_select)
 		elif submenu == 3:
-			if Input.is_action_just_pressed("cancel"):
+			if event.is_action_pressed("cancel"):
 				do_submenu(3, true)
+				Funcs.do_sound(snd_select)
 		
 	if submenu == 0:
 		for i in range(buttons.size()):
@@ -226,7 +218,23 @@ func _physics_process(_delta):
 			else:
 				pass
 
-func do_confirm(): # todo: finish
+func _physics_process(_delta):
+	if textbox.visible:
+		if typewriter.is_typing():
+			if Input.is_action_just_pressed("cancel"):
+				typewriter.skip_typing()
+		if textbox_done and Input.is_action_just_pressed("confirm"):
+			textbox_done = false
+			textbox.visible = false
+			vis_all(false)
+			PlayerData.global["menu_open"] = false
+			PlayerData.global["interact"] = true
+			selection = 0
+			submenu = 0
+		else:
+			pass # TODO: implement. god this will be so hard
+
+func do_confirm(): # TODO: finish
 	if submenu == 0:
 		if selection == 0: # item
 			Funcs.do_sound(snd_confirm)

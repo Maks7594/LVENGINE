@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ekkw2ywef03p"]
+[gd_scene format=3 uid="uid://ekkw2ywef03p"]
 
 [ext_resource type="Script" uid="uid://0v2vuf3yqnkp" path="res://scenes/warning_menu.gd" id="1_rks17"]
 [ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="2_5k4te"]
 [ext_resource type="Texture2D" uid="uid://bouatef2s8e3f" path="res://logo.png" id="3_gy2ub"]
 [ext_resource type="AudioStream" uid="uid://cdb27tcalyw3c" path="res://sounds/snd_intronoise.ogg" id="4_fkdn6"]
 
-[node name="WarningMenu" type="Control"]
+[node name="WarningMenu" type="Control" unique_id=2053174362]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,7 +22,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_rks17")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1353989385]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1635754811]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -45,23 +45,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = -68.5
-offset_right = 274.0
-offset_bottom = 68.5
+offset_left = -133.5
+offset_top = -8.0
+offset_right = 133.5
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(133.5, 8)
 size_flags_horizontal = 4
 theme = ExtResource("2_5k4te")
-theme_override_font_sizes/font_size = 32
-text = "This project is not affiliated
-with Toby Fox and UNDERTALE.
-
-All assets (images, sounds) belong to him."
+theme_override_font_sizes/font_size = 16
+text = "Not affiliated with Toby Fox or UNDERTALE."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=758623561]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -79,5 +78,5 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(453.5, 71.25)
 texture = ExtResource("3_gy2ub")
 
-[node name="Splash" type="AudioStreamPlayer" parent="."]
+[node name="Splash" type="AudioStreamPlayer" parent="." unique_id=791650912]
 stream = ExtResource("4_fkdn6")

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cy7bovo74k40y" path="res://sounds/item.wav" id="3_vdcm2"]
 [ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="4_6rmj2"]
 [ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="4_y4yjw"]
+[ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="5_vdcm2"]
 [ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="5_waa4j"]
 [ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="6_ok7cu"]
 
@@ -27,6 +28,9 @@ volume_db = -5.0
 [node name="Select" type="AudioStreamPlayer" parent="SFX" unique_id=732693236]
 stream = ExtResource("4_6rmj2")
 volume_db = -5.0
+
+[node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=1117647224]
+stream = ExtResource("5_vdcm2")
 
 [node name="QuickInfo" type="ColorRect" parent="." unique_id=1511549040]
 visible = false
@@ -540,3 +544,5 @@ offset_top = 196.0
 offset_right = 74.0
 offset_bottom = 214.0
 texture = ExtResource("3_ibotj")
+
+[connection signal="typewriting_done" from="Textbox/TypeWriterLabel" to="." method="_on_typewriting_done"]

@@ -1,6 +1,11 @@
 extends Control
 
 func _ready():
+	print("LVENGINE by Maximized")
+	
+	PlayerVars.load_settings()
+	PlayerVars.apply_settings()
+	
 	var tween1 = create_tween()
 	tween1.tween_property($Label, "modulate:a", 1.0, 0.5)
 	

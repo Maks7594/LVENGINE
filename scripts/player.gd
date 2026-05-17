@@ -21,15 +21,16 @@ func update_raycast():
 	raycast.target_position = looking * interaction_distance
 
 func _input(event):
-	if Input.is_key_pressed(KEY_F1):
-		PlayerData.player["hp"] = 5
-	elif Input.is_key_pressed(KEY_F2):
-		PlayerData.player["hp"] = 10
-	elif Input.is_key_pressed(KEY_F3):
-		PlayerData.player["hp"] = 20
+	if PlayerVars.settings["debug"]:
+		if Input.is_key_pressed(KEY_F1):
+			PlayerData.player["hp"] = 5
+		elif Input.is_key_pressed(KEY_F2):
+			PlayerData.player["hp"] = 10
+		elif Input.is_key_pressed(KEY_F3):
+			PlayerData.player["hp"] = 20
 	
 	if event.is_action_pressed("confirm"):
-		if raycast.is_colliding():
+		if raycast.is_colliding() and PlayerData.global["interact"]:
 			var target = raycast.get_collider()
 			if target.has_method("interact"):
 				print("running method")
@@ -38,8 +39,10 @@ func _input(event):
 func _physics_process(_delta: float):
 	if PlayerData.global["cam_active"]:
 		if not $"../Camera" == null:
-			$"../Camera".position.x = lerp($"../Camera".position.x, position.x, 0.1)
-			$"../Camera".position.y = lerp($"../Camera".position.y, position.y, 0.1)
+			#$"../Camera".position.x = lerp($"../Camera".position.x, position.x, 0.1)
+			#$"../Camera".position.y = lerp($"../Camera".position.y, position.y, 0.1)
+			$"../Camera".position.x = position.x
+			$"../Camera".position.y = position.y
 	if PlayerData.global["interact"]:
 		var v = Vector2.ZERO
 		v.x = Input.get_axis("left", "right")

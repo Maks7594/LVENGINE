@@ -24,7 +24,6 @@ func _ready():
 	else:
 		return
 	
-	$Settings/OptionsList/MaxFPS.text = "Max FPS: " + str(PlayerVars.settings["max_fps"])
 	$Settings/OptionsList/Music.text = "Music: " + str(PlayerVars.settings["music"])
 	$Settings/OptionsList/SFX.text = "Sound: " + str(PlayerVars.settings["sfx"])
 	$Settings/OptionsList/BiggerWindow.text = "Bigger Window: " + str(PlayerVars.settings["bigger_window"])
@@ -68,7 +67,7 @@ func do_confirm():
 	if not in_settings:
 		if selection == 0:
 			Funcs.do_sound(snd_confirm)
-			get_tree().change_scene_to_file("res://scenes/rooms/room0	.tscn")
+			get_tree().change_scene_to_file("res://scenes/rooms/room0.tscn")
 		elif selection == 1:
 			Funcs.do_sound(snd_confirm)
 			settings_toggle()
