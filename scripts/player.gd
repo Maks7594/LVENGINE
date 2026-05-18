@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var snd_select = $"../UI/SFX/Select"
 @onready var snd_item = $"../UI/SFX/Item"
 
-@onready var raycast = $InteractionRaycast
+@onready var cast = $InteractionRaycast
 
 @onready var ui = $"/root/UI"
 
@@ -17,8 +17,8 @@ var interaction_distance := 20
 # This will store "x" or "y" to remember what we pressed first
 var face_priority = ""
 
-func update_raycast():
-	raycast.target_position = looking * interaction_distance
+func update_cast():
+	cast.target_position = looking * interaction_distance
 
 func _input(event):
 	if PlayerVars.settings["debug"]:
@@ -30,8 +30,8 @@ func _input(event):
 			PlayerData.player["hp"] = 20
 	
 	if event.is_action_pressed("confirm"):
-		if raycast.is_colliding() and PlayerData.global["interact"]:
-			var target = raycast.get_collider()
+		if cast.is_colliding() and PlayerData.global["interact"]:
+			var target = cast.get_collider()
 			if target.has_method("interact"):
 				print("running method")
 				target.interact()
@@ -50,7 +50,7 @@ func _physics_process(_delta: float):
 		
 		if v != Vector2.ZERO:
 			looking = v
-			update_raycast()
+			update_cast()
 		
 		if face_priority == "":
 			if v.x != 0: face_priority = "x"

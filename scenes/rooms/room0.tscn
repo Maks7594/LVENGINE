@@ -390,6 +390,7 @@ script = ExtResource("3_anl3s")
 [node name="SFX" type="Node" parent="." unique_id=314723594]
 
 [node name="Music" type="AudioStreamPlayer" parent="SFX" unique_id=1878010645]
+volume_db = -10.0
 
 [node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=124745348]
 stream = ExtResource("2_teq4o")

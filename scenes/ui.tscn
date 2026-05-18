@@ -235,6 +235,7 @@ metadata/_custom_type_script = "uid://bigcfyacvshrd"
 
 [node name="TypeSound" type="AudioStreamPlayer" parent="Textbox" unique_id=728716362]
 stream = ExtResource("6_ok7cu")
+max_polyphony = 42069
 
 [node name="Inventory" type="ColorRect" parent="." unique_id=1465968010]
 visible = false
@@ -527,7 +528,7 @@ offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 1)
 
-[node name="Soul" type="TextureRect" parent="." unique_id=1573497875]
+[node name="CosmeticSoul" type="TextureRect" parent="." unique_id=864691822]
 visible = false
 self_modulate = Color(1, 0, 0, 1)
 offset_left = 56.0
@@ -536,7 +537,7 @@ offset_right = 74.0
 offset_bottom = 214.0
 texture = ExtResource("3_ibotj")
 
-[node name="CosmeticSoul" type="TextureRect" parent="." unique_id=864691822]
+[node name="Soul" type="TextureRect" parent="." unique_id=1573497875]
 visible = false
 self_modulate = Color(1, 0, 0, 1)
 offset_left = 56.0

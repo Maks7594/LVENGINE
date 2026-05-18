@@ -6,6 +6,8 @@ func _ready():
 	PlayerVars.load_settings()
 	PlayerVars.apply_settings()
 	
+	PlayerVars.detect_ut()
+	
 	var tween1 = create_tween()
 	tween1.tween_property($Label, "modulate:a", 1.0, 0.5)
 	

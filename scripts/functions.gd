@@ -11,7 +11,10 @@ func do_sound(stream: AudioStreamPlayer):
 
 func do_music(stream: AudioStreamPlayer):
 	if PlayerVars.settings["music"]:
-		stream.play()
+		if not stream == null:
+			stream.play()
+		else:
+			push_error("Tried to play " + str(stream) + " but is null!")
 	else:
 		return
 

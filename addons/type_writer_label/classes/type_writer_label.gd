@@ -75,14 +75,15 @@ func _process(delta: float) -> void:
 							_text_to_type = _text_to_type.erase(0)
 							next_chars += next_char
 							_typing_timer += _typing_time_gap
+							
+							if typing_sound_player and _typing_time_gap > 0:
+								typing_sound_player.play(0.0)
+							
 							# If a "stop" character is reached, do not type more characters for the current frame.
 							if stop_after_character && _is_stop_character(next_char):
 								_stop_timer = stop_duration
 								break
 						visible_characters += next_chars.length()
-						# Play writing sound if exists and is not playing.
-						if typing_sound_player && !typing_sound_player.playing:
-							typing_sound_player.play(0.0)
 						_typing_timer -= delta
 					_stop_timer -= delta
 				else: # If typing, but has no more text to type, means the typing is done.

@@ -5,9 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="3_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://bouatef2s8e3f" path="res://logo.png" id="3_qe12f"]
 [ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="4_8qtwp"]
-[ext_resource type="Texture2D" uid="uid://c0pqnt43etk8r" path="res://images/soul.png" id="5_dy7ct"]
 
-[node name="Control" type="Control" unique_id=594732019]
+[node name="MainMenu" type="Control" unique_id=594732019]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,15 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_glbon")
-
-[node name="Soul" type="TextureRect" parent="." unique_id=673851140]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 0
-offset_left = 265.0
-offset_top = 216.0
-offset_right = 281.0
-offset_bottom = 232.0
-texture = ExtResource("5_dy7ct")
 
 [node name="SFX" type="Node" parent="." unique_id=296042329]
 
@@ -64,6 +54,7 @@ texture = ExtResource("3_qe12f")
 expand_mode = 1
 
 [node name="Play" type="Label" parent="MainMenu" unique_id=24820482]
+modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,76 +103,3 @@ grow_vertical = 2
 theme = ExtResource("4_8qtwp")
 text = "Quit"
 horizontal_alignment = 1
-
-[node name="Settings" type="Control" parent="." unique_id=1786203037]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Options" type="Label" parent="Settings" unique_id=1725824668]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -235.0
-offset_right = 98.0
-offset_bottom = -171.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_8qtwp")
-theme_override_font_sizes/font_size = 64
-text = "OPTIONS"
-
-[node name="OptionsList" type="VBoxContainer" parent="Settings" unique_id=927916786]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -287.0
-offset_top = -165.0
-offset_right = -97.0
-offset_bottom = -61.0
-grow_vertical = 2
-
-[node name="Music" type="Label" parent="Settings/OptionsList" unique_id=497073454]
-layout_mode = 2
-theme = ExtResource("4_8qtwp")
-text = "Music: "
-vertical_alignment = 1
-
-[node name="SFX" type="Label" parent="Settings/OptionsList" unique_id=1279651986]
-layout_mode = 2
-theme = ExtResource("4_8qtwp")
-text = "Sound: "
-vertical_alignment = 1
-
-[node name="BiggerWindow" type="Label" parent="Settings/OptionsList" unique_id=1245835172]
-layout_mode = 2
-theme = ExtResource("4_8qtwp")
-text = "Bigger Window: "
-vertical_alignment = 1
-
-[node name="Back" type="Label" parent="Settings" unique_id=118484021]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = 138.0
-offset_right = 28.0
-offset_bottom = 170.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_8qtwp")
-text = "Apply"
