@@ -26,6 +26,7 @@ stream = ExtResource("3_8qtwp")
 volume_db = -5.0
 
 [node name="Music" type="AudioStreamPlayer" parent="SFX" unique_id=1168906712]
+volume_db = -10.0
 
 [node name="MainMenu" type="Control" parent="." unique_id=1754676682]
 layout_mode = 1

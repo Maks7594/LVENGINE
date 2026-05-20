@@ -1,13 +1,23 @@
 extends Control
 
-@onready var buttons = [$Settings/OptionsList/Exit, $Settings/OptionsList/Music, $Settings/OptionsList/SFX, $Settings/OptionsList/BiggerWindow]
+@onready var buttons = [$Settings/OptionsList/Exit, $Settings/OptionsList/Apply, $Settings/OptionsList/Music, $Settings/OptionsList/SFX, $Settings/OptionsList/BiggerWindow]
 
 @onready var snd_confirm = $SFX/Confirm
 @onready var snd_select = $SFX/Select
 @onready var snd_harp = $SFX/Harp
-@onready var mus_menu = $SFX/Music
+@onready var mus_settings = $SFX/Music
+
+var texts = [
+	"godot > unity fr fr",
+	"ok but linux\ndoesnt force u to\npay to use it",
+]
 
 var selection := 0
+
+func txt():
+	buttons[1].text = "SETTINGS APPLIED!"
+	await get_tree().create_timer(1).timeout
+	buttons[1].text = "APPLY"
 
 func unsheathe():
 	var bb1 = $Settings/BlackBar
@@ -19,21 +29,42 @@ func unsheathe():
 	var tween2 = create_tween()
 	tween2.tween_property(bb2, "position:x", -640, 1.5)
 
-func snd():
-	if PlayerVars.other["undertale_detected"] != "":
-		print("Trying path " + PlayerVars.other["undertale_detected"] + "mus_options_fall.ogg")
-		var mus_bytes: PackedByteArray = FileAccess.get_file_as_bytes(PlayerVars.other["undertale_detected"] + "mus_options_fall.ogg")
+func snd(): 
+	var mus = "mus_options_fall.ogg" # Default
+	
+	# Match month to season
+	match Time.get_date_dict_from_system()["month"]:
+		3, 4, 5: # Spring
+			mus = "mus_options_fall.ogg"
+			$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]spring time\nback to school[/tornado]"
+			$Settings/Dog.animation = "spring"
+		6, 7, 8: # Summer
+			mus = "mus_options_summer.ogg"
+			$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]try to withstand\nthe sun's life-\ngiving rays[/tornado]"
+			$Settings/Dog.animation = "summer"
+		9, 10, 11: # Fall
+			mus = "mus_options_fall.ogg"
+			$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]sweep a leaf\nsweep away a troubles[/tornado]"
+			$Settings/Dog.animation = "fall"
+		12, 1, 2: # Winter
+			mus = "mus_options_winter.ogg"
+			$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]cold outside\nbut stay warm\ninside of you[/tornado]"
+			$Settings/Dog.animation = "winter"
+	if PlayerVars.other["undertale_detected"] != "": # If we detected the Undertale installation
+		# print("Trying path " + PlayerVars.other["undertale_detected"] + mus)
+		var mus_bytes: PackedByteArray = FileAccess.get_file_as_bytes(PlayerVars.other["undertale_detected"] + mus)
 		if mus_bytes.is_empty():
-			print("Music file is empty!")
-			$Settings/MusErrorLabel.visible = true
+			print("Couldn't load music!")
 			return
 		var mus_stream := AudioStreamOggVorbis.load_from_buffer(mus_bytes)
 		mus_stream.loop = true
-		mus_menu.stream = mus_stream
+		mus_settings.stream = mus_stream
+	else:
+		$Settings/MusErrorLabel.visible = true
 		
 	Funcs.do_sound(snd_harp)
 	await get_tree().create_timer(1.5).timeout
-	Funcs.do_music(mus_menu)
+	Funcs.do_music(mus_settings)
 
 func _ready():
 	PlayerVars.detect_ut()
@@ -42,11 +73,12 @@ func _ready():
 	PlayerVars.apply_settings()
 	
 	snd()
+	$Settings/Dog.play()
 	unsheathe()
 	
-	buttons[1].text = "Music: " + str(PlayerVars.settings["music"])
-	buttons[2].text = "Sound: " + str(PlayerVars.settings["sfx"])
-	buttons[3].text = "Bigger Window: " + str(PlayerVars.settings["bigger_window"])
+	buttons[2].text = "Music: " + str(PlayerVars.settings["music"])
+	buttons[3].text = "Sound: " + str(PlayerVars.settings["sfx"])
+	buttons[4].text = "Window Scale: 2x" if PlayerVars.settings["bigger_window"] else "Window Scale: 1x"
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
@@ -63,26 +95,30 @@ func _process(_delta: float) -> void:
 func do_confirm():
 	if selection == 0:
 		Funcs.do_sound(snd_confirm)
-		PlayerVars.save_settings()
-		PlayerVars.apply_settings()
+		
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	elif selection == 1:
 		Funcs.do_sound(snd_confirm)
-		PlayerVars.settings["music"] = false if PlayerVars.settings["music"] == true else true
-		buttons[1].text = "Music: " + str(PlayerVars.settings["music"])
-		
-		if not PlayerVars.settings["music"] and mus_menu.playing:
-			mus_menu.playing = false
-		elif PlayerVars.settings["music"] and not mus_menu.playing:
-			mus_menu.playing = true
+		PlayerVars.save_settings()
+		txt()
+		PlayerVars.apply_settings()
 	elif selection == 2:
 		Funcs.do_sound(snd_confirm)
-		PlayerVars.settings["sfx"] = false if PlayerVars.settings["sfx"] == true else true
-		buttons[2].text = "Sound: " + str(PlayerVars.settings["sfx"])
+		PlayerVars.settings["music"] = false if PlayerVars.settings["music"] == true else true
+		buttons[selection].text = "Music: " + str(PlayerVars.settings["music"])
+		
+		if not PlayerVars.settings["music"] and mus_settings.playing:
+			mus_settings.playing = false
+		elif PlayerVars.settings["music"] and not mus_settings.playing:
+			mus_settings.playing = true
 	elif selection == 3:
 		Funcs.do_sound(snd_confirm)
+		PlayerVars.settings["sfx"] = false if PlayerVars.settings["sfx"] == true else true
+		buttons[selection].text = "Sound: " + str(PlayerVars.settings["sfx"])
+	elif selection == 4:
+		Funcs.do_sound(snd_confirm)
 		PlayerVars.settings["bigger_window"] = false if PlayerVars.settings["bigger_window"] == true else true
-		buttons[3].text = "Bigger Window: " + str(PlayerVars.settings["bigger_window"])
+		buttons[selection].text = "Window Scale: 2x" if PlayerVars.settings["bigger_window"] else "Window Scale: 1x"
 
 func select(btn: Node):
 	for i in range(buttons.size()):

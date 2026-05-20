@@ -8,7 +8,8 @@ var settings = {
 	
 	"music": true,
 	"sfx": true,
-	"bigger_window": false
+	"bigger_window": false,
+	"fullscreen": false
 }
 
 var other = {
@@ -51,18 +52,39 @@ func detect_ut():
 	
 	match OS.get_name():
 		"Windows":
-			print("Checking path: " + win_path)
+			# print("Checking path: " + win_path)
 			if DirAccess.dir_exists_absolute(win_path):
-				print("Detected Undertale at " + win_path + "!")
+				# print("Detected Undertale at " + win_path + "!")
 				PlayerVars.other["undertale_detected"] = win_path
+				return win_path
 			else:
-				print("Couldn't detect Undertale or not installed!")
+				# print("Couldn't detect Undertale or not installed!")
+				return ""
 		"Linux":
-			print("Checking path: " + linux_path)
+			# print("Checking path: " + linux_path)
 			if DirAccess.dir_exists_absolute(linux_path):
-				print("Detected Undertale at " + linux_path + "!")
+				# print("Detected Undertale at " + linux_path + "!")
 				PlayerVars.other["undertale_detected"] = linux_path
+				return linux_path
 			else:
-				print("Couldn't detect Undertale or not installed!")
+				# print("Couldn't detect Undertale or not installed!")
+				return ""
 		_:
-			print("Unsupported OS! Couldn't detect Undertale!")
+			print("Unsupported OS %s! Couldn't detect Undertale!" % OS.get_name())
+			return ""
+
+func fs_toggle():
+	settings["fullscreen"] = not settings["fullscreen"]
+	# print("fullscreen:" + str(settings["fullscreen"]))
+	if not settings["fullscreen"]:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if settings["bigger_window"]:
+			get_window().size = Vector2i(1280, 960)
+		else:
+			get_window().size = Vector2i(640, 480)
+		get_window().move_to_center()
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+		get_window().size = DisplayServer.screen_get_size()

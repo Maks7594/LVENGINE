@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0v2vuf3yqnkp" path="res://scenes/warning_menu.gd" id="1_rks17"]
 [ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="2_5k4te"]
+[ext_resource type="Theme" uid="uid://bmc673ftnnafr" path="res://themes/battleinfo.tres" id="3_fkdn6"]
 [ext_resource type="Texture2D" uid="uid://bouatef2s8e3f" path="res://logo.png" id="3_gy2ub"]
 [ext_resource type="AudioStream" uid="uid://cdb27tcalyw3c" path="res://sounds/snd_intronoise.ogg" id="4_fkdn6"]
 
@@ -59,6 +60,49 @@ theme_override_font_sizes/font_size = 16
 text = "Not affiliated with Toby Fox or UNDERTALE."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1122772279]
+visible = false
+modulate = Color(1, 1, 1, 0.49803922)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 133.0
+offset_right = 97.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_fkdn6")
+theme_override_font_sizes/font_size = 16
+text = "(press z to continue)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ErrorLabel" type="Label" parent="." unique_id=1580511482]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = 183.0
+offset_right = 319.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5k4te")
+theme_override_font_sizes/font_size = 16
+text = "WARNING! Undertale was not detected as installed.
+LVENGINE uses these assets to play music from the game.
+You will NOT hear licensed music. Please install the game."
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=758623561]
 visible = false

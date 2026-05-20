@@ -228,6 +228,7 @@ offset_top = 20.0
 offset_right = 548.0
 offset_bottom = 118.0
 theme = ExtResource("4_y4yjw")
+bbcode_enabled = true
 script = ExtResource("5_waa4j")
 typing_speed = 30.0
 typing_sound_player = NodePath("../TypeSound")

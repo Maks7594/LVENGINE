@@ -9,27 +9,23 @@ extends Control
 var selection := 0
 
 func _ready():
+	PlayerVars.detect_ut()
 	PlayerVars.load_settings()
 	PlayerVars.apply_settings()
 	
-	if PlayerVars.settings["music"]:
-		$SFX/Music.play()
-	else:
-		return
+	Funcs.do_ut_music($SFX/Music, "mus_menu0.ogg", true)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
-		selection = (selection + 1 + 5) % 5
+		selection = (selection + 1 + 3) % 3
 		Funcs.do_sound(snd_select)
 		select(buttons[selection])
 	elif Input.is_action_just_pressed("up"):
-		selection = (selection - 1 + 5) % 5
+		selection = (selection - 1 + 3) % 3
 		Funcs.do_sound(snd_select)
 		select(buttons[selection])
 	elif Input.is_action_just_pressed("confirm"):
 		do_confirm()
-		
-		
 
 func do_confirm():
 	if selection == 0:

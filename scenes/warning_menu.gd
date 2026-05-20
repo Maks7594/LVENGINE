@@ -1,12 +1,17 @@
 extends Control
 
+func _input(event):
+	if event.is_action_pressed("confirm"):
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
 func _ready():
 	print("LVENGINE by Maximized")
 	
 	PlayerVars.load_settings()
 	PlayerVars.apply_settings()
 	
-	PlayerVars.detect_ut()
+	if PlayerVars.detect_ut() == "":
+		$ErrorLabel.visible = true
 	
 	var tween1 = create_tween()
 	tween1.tween_property($Label, "modulate:a", 1.0, 0.5)
@@ -24,4 +29,4 @@ func _ready():
 	$Splash.play()
 	await get_tree().create_timer(4).timeout
 	
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	$Label2.visible = true

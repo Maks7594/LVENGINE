@@ -41,8 +41,12 @@ var submenu := 0
 var subsubmenu := 0
 var items_page := 0
 
+func _ready():
+	update_ui()
+
 func update_ui():
 	$PlayerName.text = PlayerData.player["name"]
+	$PlayerLove.position.x = $PlayerName.size.x + 60
 	$PlayerLove.text = "LV %d" % PlayerData.player["love"]
 	$PlayerHP.text = "%d / %d" % [PlayerData.player["hp"], PlayerData.player["max_hp"]]
 	if submenu == 0:

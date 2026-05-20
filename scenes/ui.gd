@@ -112,11 +112,38 @@ func generate_info_text(sel_item):
 	return '* "%s" - %s\n%s' % [item_name, stat_text, item_info]
 
 var textbox_done := false
+var multidialogue := []
+var multipage := false
+var cur_page := 0
 
 func do_textbox(text: String):
 	PlayerData.global["interact"] = false
 	textbox.visible = true
 	typewriter.typewrite(text)
+
+func do_multipage_textbox(dialogue: Array, js_type: bool):
+	if not js_type:
+		multidialogue = dialogue
+		multipage = true
+		PlayerData.global["interact"] = false
+		textbox.visible = true
+		typewriter.typewrite(dialogue[0])
+	else:
+		if cur_page >= dialogue.size():
+			print("end of textbox!!1")
+			textbox_done = false
+			multidialogue = []
+			multipage = false
+			cur_page = 0
+			textbox_done = false
+			textbox.visible = false
+			vis_all(false)
+			PlayerData.global["menu_open"] = false
+			PlayerData.global["interact"] = true
+			selection = 0
+			submenu = 0
+		else:
+			typewriter.typewrite(dialogue[cur_page])
 
 func tekst(text: String):
 	PlayerData.global["menu_open"] = false
@@ -221,18 +248,21 @@ func _input(event):
 func _physics_process(_delta):
 	if textbox.visible:
 		if typewriter.is_typing():
-			if Input.is_action_just_pressed("cancel"):
+			if Input.is_action_pressed("cancel"):
 				typewriter.skip_typing()
 		if textbox_done and Input.is_action_just_pressed("confirm"):
-			textbox_done = false
-			textbox.visible = false
-			vis_all(false)
-			PlayerData.global["menu_open"] = false
-			PlayerData.global["interact"] = true
-			selection = 0
-			submenu = 0
-		else:
-			pass # TODO: implement. god this will be so hard
+			if not multipage:
+				textbox_done = false
+				textbox.visible = false
+				vis_all(false)
+				PlayerData.global["menu_open"] = false
+				PlayerData.global["interact"] = true
+				selection = 0
+				submenu = 0
+			else:
+				textbox_done = false
+				cur_page += 1
+				do_multipage_textbox(multidialogue, true)
 
 func do_confirm(): # TODO: finish
 	if submenu == 0:

@@ -35,7 +35,7 @@ func start_battle():
 	PlayerData.global["in_battle"] = true
 	$BattleUI.visible = true
 	$"../World/UI/Overlay".visible = false
-	print($"../World/UI/Overlay".visible)
+	Funcs.do_ut_music($SFX/Music, "mus_battle1.ogg", false)
 
 func end_battle():
 	pass

@@ -33,7 +33,6 @@ func _input(event):
 		if cast.is_colliding() and PlayerData.global["interact"]:
 			var target = cast.get_collider()
 			if target.has_method("interact"):
-				print("running method")
 				target.interact()
 
 func _physics_process(_delta: float):
