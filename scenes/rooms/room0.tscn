@@ -27,7 +27,7 @@
 [ext_resource type="Theme" uid="uid://bmc673ftnnafr" path="res://themes/battleinfo.tres" id="14_anl3s"]
 [ext_resource type="Texture2D" uid="uid://dltnbvggo8f3m" path="res://images/battle/0s.png" id="14_aodyf"]
 [ext_resource type="Texture2D" uid="uid://bo01o3fl06cdb" path="res://images/battle/hp.png" id="15_3vehu"]
-[ext_resource type="PackedScene" uid="uid://dqmiy7p642uqk" path="res://scenes/player_noelle.tscn" id="15_450ph"]
+[ext_resource type="PackedScene" uid="uid://dkimfhoh8m06p" path="res://scenes/player.tscn" id="15_450ph"]
 [ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="16_3rbc8"]
 [ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="17_igcnr"]
 [ext_resource type="PackedScene" uid="uid://fo2xmw3i6pdd" path="res://scenes/soul.tscn" id="18_jn4nm"]
@@ -475,14 +475,14 @@ shape = SubResource("RectangleShape2D_igcnr")
 stream = ExtResource("12_450ph")
 volume_db = -5.0
 
+[node name="Player" parent="World" unique_id=1499741422 instance=ExtResource("15_450ph")]
+position = Vector2(181, 154)
+
 [node name="Camera" type="Camera2D" parent="World" unique_id=1170755297]
 limit_left = -160
 limit_top = -160
 limit_right = 800
 limit_bottom = 640
-
-[node name="Player" parent="World" unique_id=1499741422 instance=ExtResource("15_450ph")]
-position = Vector2(179, 148)
 
 [node name="UI" parent="World" unique_id=1407451951 instance=ExtResource("4_y77y4")]
 
@@ -620,9 +620,7 @@ offset_right = 564.0
 offset_bottom = 371.0
 theme = ExtResource("16_3rbc8")
 bbcode_enabled = true
-text = "* ABCDEFGHIIJKLMNOPQRSTUVWXYZ
-* abcdefghijklmnopqrstuvwxyz
-* 1234567890!?$@%&()"
+text = "* "
 script = ExtResource("17_igcnr")
 typing_speed = 25.0
 typing_sound_player = NodePath("../SFX/Type")
@@ -694,4 +692,10 @@ text = "[code]* Option 6"
 [node name="Soul" parent="Battle/BattleUI" unique_id=917277600 instance=ExtResource("18_jn4nm")]
 position = Vector2(49, 454)
 
+[node name="Label" type="Label" parent="Battle/BattleUI" unique_id=450692179]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "opt"
+
 [connection signal="body_entered" from="World/Trigger" to="World/Trigger" method="_on_body_entered"]
+[connection signal="typewriting_done" from="Battle/BattleUI/Dialogue" to="Battle/BattleUI" method="_on_typewriting_done"]

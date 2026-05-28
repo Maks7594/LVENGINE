@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_fhnjs")
 name = "Bandage"
+short_name = "Bandage"
 info = "* It has already been used several times."
 on_use = "* You used the Bandage."
 heal = 10

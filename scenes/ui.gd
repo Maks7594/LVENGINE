@@ -130,7 +130,7 @@ func do_multipage_textbox(dialogue: Array, js_type: bool):
 		typewriter.typewrite(dialogue[0])
 	else:
 		if cur_page >= dialogue.size():
-			print("end of textbox!!1")
+			# print("End of textbox")
 			textbox_done = false
 			multidialogue = []
 			multipage = false
@@ -404,6 +404,9 @@ func do_confirm(): # TODO: finish
 					PlayerData.player["items"].pop_at(selected_item)
 					tekst(message)
 					update_ui()
+					Funcs.do_sound($SFX/Swallow)
+					await get_tree().create_timer(0.35).timeout
+					Funcs.do_sound($SFX/Heal)
 					
 		if selection == 1: # info
 			tekst(generate_info_text(selected_item))

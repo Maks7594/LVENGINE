@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://6xch5qstssn0"]
+
+[ext_resource type="Script" uid="uid://bisdf51penxf0" path="res://data/base/encounter.gd" id="1_0p6o6"]
+[ext_resource type="Resource" uid="uid://ctxveh3ak1dsm" path="res://data/enemies/test.tres" id="1_d6gfs"]
+
+[resource]
+script = ExtResource("1_0p6o6")
+middle_enemy = ExtResource("1_d6gfs")
+metadata/_custom_type_script = "uid://bisdf51penxf0"

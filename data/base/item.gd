@@ -4,10 +4,12 @@ extends Resource
 class_name Item
 
 @export_group("Information")
-## The translation string of the item.
+## The name of the item.
 @export var name := "Test Item"
+## Short name.
+@export var short_name := "TstItm"
 ## Description of the item (displayed via INFO in inventory)
-@export var info := "* A square box with dev textures. Heals 20HP."
+@export var info := "* A square box with dev textures."
 ## Message upon using the item (via USE)
 ## Will also show when item is armory and equippable is set to false.
 @export var on_use := "* You used the Test Item."
@@ -15,6 +17,8 @@ class_name Item
 @export_group("Effects")
 ## Can the item be consumed?
 @export var consumable := true
+## Can the item be used in battle
+@export var usable_in_battle := true
 ## How many HP does the item heal?
 @export var heal := 0
 ## Does the item fully heal the player?

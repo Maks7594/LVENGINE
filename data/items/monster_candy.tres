@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bd7c57qkd4j0p"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bd7c57qkd4j0p"]
 
 [ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_k1e1l"]
 
 [resource]
 script = ExtResource("1_k1e1l")
 name = "Monster Candy"
+short_name = "MnstrCndy"
 info = "* Has a distinct, non-licorice flavor."
 on_use = "* You ate the Monster Candy."
 heal = 10

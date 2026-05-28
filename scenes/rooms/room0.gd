@@ -50,7 +50,7 @@ func start_battle_anim():
 	tween.tween_property(soul, "position", Vector2(41, 446), 0.5).set_trans(Tween.TRANS_LINEAR)
 	await tween.finished
 	await get_tree().create_timer(0.1).timeout
-	$Battle.start_battle()
+	$Battle.start_battle(load("res://data/encounters/test.tres"))
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_home"):

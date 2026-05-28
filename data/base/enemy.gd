@@ -7,13 +7,14 @@ class_name Enemy
 @export var check := "It's a dev cube."
 
 @export var max_hp := 20
-@export var attack := 5
+@export var attack := 4
 @export var defense := 5
-@export var gold_on_win := 10
-@export var exp_on_win := 20
+@export var gold_on_win := 5
+@export var exp_on_win := 10
 
 @export_group("Acts")
 @export var acts := 2
+
 @export var act1_name := "Check"
 @export var act1_mercy := 0
 @export var act1_message := "* %s - ATK %d DEF %d\n* %s" % [name, attack, defense, check]
@@ -21,3 +22,19 @@ class_name Enemy
 @export var act2_name := "Mercy"
 @export var act2_mercy := 100
 @export var act2_message := "* Made the enemy sparable!"
+
+@export var act3_name := ""
+@export var act3_mercy := 0
+@export var act3_message := ""
+
+@export var act4_name := ""
+@export var act4_mercy := 0
+@export var act4_message := ""
+
+@export var act5_name := ""
+@export var act5_mercy := 0
+@export var act5_message := ""
+
+@export var act6_name := ""
+@export var act6_mercy := 0
+@export var act6_message := ""

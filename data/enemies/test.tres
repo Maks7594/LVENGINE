@@ -4,5 +4,8 @@
 
 [resource]
 script = ExtResource("1_nl7v1")
+attack = 4
+gold_on_win = 5
+exp_on_win = 10
 act1_message = null
 metadata/_custom_type_script = "uid://mec2gbhx7e41"

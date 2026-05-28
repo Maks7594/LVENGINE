@@ -1,7 +1,7 @@
 extends Node
 
 var player = {
-	"name": "Noelle",
+	"name": "Chara",
 	"love": 1,
 	"exp": 0,
 	

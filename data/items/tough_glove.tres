@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c7sqvlvoeoql5"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://c7sqvlvoeoql5"]
 
 [ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_dv6n7"]
 
 [resource]
 script = ExtResource("1_dv6n7")
 name = "Tough Glove"
+short_name = "TuffGlove"
 info = "* A worn pink leather glove. For five-fingered folk."
 on_use = "* You equipped the Tough Glove."
+usable_in_battle = false
 full_heal = false
 equipped_at_boost = 5
 equippable = true

@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @onready var ui = $"/root/UI"
 
+var v = Vector2.ZERO
 var speed := 150.0
 var run_speed := 200.0
 var looking = Vector2.DOWN
@@ -42,11 +43,12 @@ func _physics_process(_delta: float):
 			#$"../Camera".position.y = lerp($"../Camera".position.y, position.y, 0.1)
 			$"../Camera".position.x = position.x
 			$"../Camera".position.y = position.y
+	
+	v = Vector2.ZERO
+	v.x = Input.get_axis("left", "right")
+	v.y = Input.get_axis("up", "down")
+	
 	if PlayerData.global["interact"]:
-		var v = Vector2.ZERO
-		v.x = Input.get_axis("left", "right")
-		v.y = Input.get_axis("up", "down")
-		
 		if v != Vector2.ZERO:
 			looking = v
 			update_cast()
@@ -67,12 +69,11 @@ func _physics_process(_delta: float):
 		velocity.y = v.y * speed
 	
 		move_and_slide()
-		update_animation(v.x, v.y)
-	else:
-		return
+		
+	update_animation(v.x, v.y)
 
 func update_animation(x, y):
-	if x == 0 and y == 0:
+	if x == 0 and y == 0 or not PlayerData.global["interact"]:
 		sprite.stop()
 		return
 

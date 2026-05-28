@@ -1,8 +1,11 @@
 extends Control
 
+var can_skip := false
+
 func _input(event):
 	if event.is_action_pressed("confirm"):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		if can_skip:
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _ready():
 	print("LVENGINE by Maximized")
@@ -27,6 +30,7 @@ func _ready():
 	
 	$TextureRect.visible = true
 	$Splash.play()
+	can_skip = true
 	await get_tree().create_timer(4).timeout
 	
 	$Label2.visible = true

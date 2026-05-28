@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_cxpvw")
 name = "Faded Ribbon"
+short_name = "Ribbon"
 info = "* If you're cuter, monsters won't hit you as hard."
 on_use = "* You equipped the Faded Ribbon."
+usable_in_battle = false
 full_heal = false
 equipped_df_boost = 3
 equippable = true

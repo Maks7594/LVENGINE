@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="5_vdcm2"]
 [ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="5_waa4j"]
 [ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="6_ok7cu"]
+[ext_resource type="AudioStream" uid="uid://btqhqxcyuqu3e" path="res://sounds/swallow.wav" id="6_vsj0x"]
+[ext_resource type="AudioStream" uid="uid://b1xt0eshpiuaj" path="res://sounds/heal.wav" id="7_qsv74"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=337072073]
 script = ExtResource("1_nltto")
@@ -31,6 +33,12 @@ volume_db = -5.0
 
 [node name="Click" type="AudioStreamPlayer" parent="SFX" unique_id=1117647224]
 stream = ExtResource("5_vdcm2")
+
+[node name="Swallow" type="AudioStreamPlayer" parent="SFX" unique_id=87993578]
+stream = ExtResource("6_vsj0x")
+
+[node name="Heal" type="AudioStreamPlayer" parent="SFX" unique_id=1747045487]
+stream = ExtResource("7_qsv74")
 
 [node name="QuickInfo" type="ColorRect" parent="." unique_id=1511549040]
 visible = false

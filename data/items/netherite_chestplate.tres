@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://1p5bq3hq6etf"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://1p5bq3hq6etf"]
 
 [ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_uk44b"]
 
 [resource]
 script = ExtResource("1_uk44b")
 name = "Netherite Chestplate"
+short_name = "NethChest"
 info = "* Absorbs all impact. All of it."
 on_use = "* You put on the Netherite Chestplate."
+usable_in_battle = false
 full_heal = false
 equipped_df_boost = 99
 equippable = true
