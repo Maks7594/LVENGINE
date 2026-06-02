@@ -23,4 +23,4 @@ Download this project's source. Then open the project in Godot (4.6.2).
 Items can be found in `res://data/items/`, enemies and encounters can be found in the same `data` directory  
 Use `TileMapLayer` and a spritesheet to make your maps. This project comes with an example Ruins spritesheet with collisions.  
 
-If you don't hear any music, enable music in settings and **install Undertale via Steam**. Undertale detection does not work on other OSs.
+If you don't hear any music, enable music in settings and **install Undertale via Steam**. Undertale detection does not work on other OSs other than Windows and Linux.
