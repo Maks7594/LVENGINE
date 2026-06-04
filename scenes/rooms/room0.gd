@@ -6,6 +6,8 @@ extends Node2D
 @onready var soul = $World/UI/CosmeticSoul
 
 func _ready():
+	PlayerVars.load_settings()
+	PlayerVars.apply_settings()
 	PlayerVars.detect_ut()
 	
 	if PlayerVars.other["undertale_detected"] != "":

@@ -11,7 +11,7 @@ var og_p2 := 0
 var p1 := 0
 var p2 := 0
 
-func _process(delta):
+func _process(_delta):
 	if shaking == "yes":
 		get_window().position = Vector2i(
 		window_pos.x + randi_range(-p1, p1),
@@ -66,6 +66,8 @@ func meta(event: String, param1, param2):
 		"shake": # amplifier, duration (frames)
 			window_pos = get_window().position
 			
+			og_p1 = param1
+			og_p2 = param2
 			p1 = param1
 			p2 = param2
 			shaking = "yes"

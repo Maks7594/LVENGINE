@@ -1,0 +1,16 @@
+[remap]
+
+importer="texture_gif"
+importer_version=2
+type="GIFTexture"
+uid="uid://ba4ncxslyn864"
+path="res://.godot/imported/psiak.gif-12a1af4443874189426518d5d88714d5.res"
+
+[deps]
+
+source_file="res://images/settings_stuff/psiak.gif"
+dest_files=["res://.godot/imported/psiak.gif-12a1af4443874189426518d5d88714d5.res"]
+
+[params]
+
+storage/compress=true

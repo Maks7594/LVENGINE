@@ -1,5 +1,10 @@
-extends Area2D
+extends Trigger
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene_to_file("res://scenes/rooms/room1.tscn")
+		var dialogue = [
+			"* Trigger jumpscare",
+			"* boo"
+		]
+		
+		ui.do_multipage_textbox(dialogue, false)

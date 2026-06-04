@@ -59,7 +59,7 @@ func _physics_process(_delta: float):
 		
 		if v.x != 0 and v.y == 0:
 			face_priority = "x"
-		elif v.y != 0 and v.x == 0:
+		elif v.x == 0 and v.y != 0:
 			face_priority = "y"
 		
 		if v.x == 0 and v.y == 0:

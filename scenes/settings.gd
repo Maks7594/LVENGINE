@@ -32,6 +32,24 @@ func unsheathe():
 func snd(): 
 	var mus = "mus_options_fall.ogg" # Default
 	
+	# Roll random number
+	# var random = randi_range(1, 25)
+	var random = 10
+	print(random)
+	
+	if random == 10:
+		$Settings/Dog.visible = false
+		$Settings/DogSanctuary.visible = true
+		$Settings/DogLabel.position.y = -50
+		mus_settings.stream = load("res://music/mus_options_sanctuary.ogg")
+		mus_settings.stream.loop = true
+		$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]dark sanctuaries\nare in undertale\nyou just cant make\na dark world[/tornado]"
+		$Settings/Dog.animation = "spring"
+		Funcs.do_sound(snd_harp)
+		await get_tree().create_timer(1.5).timeout
+		Funcs.do_music(mus_settings)
+		return
+	
 	# Match month to season
 	match Time.get_date_dict_from_system()["month"]:
 		3, 4, 5: # Spring

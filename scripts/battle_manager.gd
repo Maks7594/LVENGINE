@@ -14,8 +14,10 @@ var base_turn_time := Engine.max_fps * 10
 var cur_turn_time := 0
 
 func do_act(act):
+	$BattleUI/Soul.visible = false
 	enemy2_mercy += encounter["middle_enemy"]["act%d_mercy" % (act + 1)]
 	ui.do_textbox(encounter["middle_enemy"]["act%d_message" % (act + 1)])
+	ui.txtbox_before_round = true
 	print(enemy2_mercy)
 
 func start_battle(e: Encounter):
@@ -32,7 +34,7 @@ func start_battle(e: Encounter):
 	Funcs.do_ut_music($SFX/Music, "mus_battle1.ogg", true)
 
 func start_turn():
-	pass
+	$BattleUI/Soul.position = Vector2i(320, 240)
 
 func end_battle():
 	pass

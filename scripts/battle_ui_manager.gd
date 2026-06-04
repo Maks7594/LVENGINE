@@ -43,7 +43,8 @@ var subsubmenu := 0
 var options_cnt = 0
 var items_page := 0
 
-var text_done = false
+var text_done := false
+var txtbox_before_round := false
 
 func _on_typewriting_done():
 	text_done = true
@@ -165,6 +166,7 @@ func do_submenu(sub_menu: int, show_opt: bool):
 		options[2].visible = true
 		options[3].visible = true
 		options[4].visible = false
+		options[5].visible = true
 		if items_page == 0:
 			options[0].text = "* %s" % PlayerData.get_item_data(PlayerData.player["items"][0], "short_name")
 			options[1].text = "* %s" % PlayerData.get_item_data(PlayerData.player["items"][1], "short_name")
@@ -302,5 +304,7 @@ func _physics_process(_delta):
 				typewriter.skip_typing()
 		else:
 			if text_done and Input.is_action_just_pressed("confirm"):
+				if txtbox_before_round:
+					bm.start_turn()
+					txtbox_before_round = false
 				text_done = false
-				bm.start_turn()
