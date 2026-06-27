@@ -6,7 +6,7 @@
 script = ExtResource("1_k1e1l")
 name = "Monster Candy"
 short_name = "MnstrCndy"
-info = "* Has a distinct, non-licorice flavor."
+info = "* Has a distinct, non-licorice[br]  flavor."
 on_use = "* You ate the Monster Candy."
 heal = 10
 full_heal = false

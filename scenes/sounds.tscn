@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://f0b5w6tugn6c"]
+
+[ext_resource type="AudioStream" uid="uid://ju0m5x2co2x3" path="res://sounds/confirm.wav" id="1_qpfqm"]
+[ext_resource type="AudioStream" uid="uid://cy7bovo74k40y" path="res://sounds/item.wav" id="2_qac78"]
+[ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="3_ayjjs"]
+[ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="4_t0uca"]
+[ext_resource type="AudioStream" uid="uid://btqhqxcyuqu3e" path="res://sounds/swallow.wav" id="5_l6vrb"]
+[ext_resource type="AudioStream" uid="uid://b1xt0eshpiuaj" path="res://sounds/heal.wav" id="6_hgnek"]
+[ext_resource type="AudioStream" uid="uid://dh3vti3y1nchk" path="res://sounds/levelup.wav" id="7_icaqj"]
+[ext_resource type="AudioStream" uid="uid://b6tpcye8ex4ui" path="res://sounds/save.wav" id="8_vtt6b"]
+[ext_resource type="AudioStream" uid="uid://5v0604iqyt7m" path="res://sounds/alert.wav" id="9_usgev"]
+
+[node name="SFX" type="Node" unique_id=2092447210]
+
+[node name="Confirm" type="AudioStreamPlayer" parent="." unique_id=1488009028]
+stream = ExtResource("1_qpfqm")
+volume_db = -5.0
+
+[node name="Item" type="AudioStreamPlayer" parent="." unique_id=1778492753]
+stream = ExtResource("2_qac78")
+volume_db = -5.0
+
+[node name="Select" type="AudioStreamPlayer" parent="." unique_id=1720283748]
+stream = ExtResource("3_ayjjs")
+volume_db = -5.0
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=693372540]
+stream = ExtResource("4_t0uca")
+
+[node name="Swallow" type="AudioStreamPlayer" parent="." unique_id=207190472]
+stream = ExtResource("5_l6vrb")
+
+[node name="Heal" type="AudioStreamPlayer" parent="." unique_id=187270370]
+stream = ExtResource("6_hgnek")
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="." unique_id=2091144851]
+stream = ExtResource("7_icaqj")
+
+[node name="Save" type="AudioStreamPlayer" parent="." unique_id=2078108249]
+stream = ExtResource("8_vtt6b")
+
+[node name="Exclamation" type="AudioStreamPlayer" parent="." unique_id=1972774855]
+stream = ExtResource("9_usgev")

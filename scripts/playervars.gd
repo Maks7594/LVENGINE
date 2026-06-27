@@ -4,7 +4,7 @@ const save_path = "user://settings.cfg"
 var config = ConfigFile.new()
 
 var settings = {
-	"debug": false,
+	"debug": true,
 	
 	"music": true,
 	"sfx": true,
@@ -44,7 +44,7 @@ func apply_settings():
 	
 	get_window().move_to_center()
 
-func detect_ut():
+func detect_ut() -> String:
 	print("Detecting UNDERTALE on " + OS.get_name())
 	
 	var win_path = "C:/Program Files (x86)/Steam/steamapps/common/Undertale/"
@@ -69,6 +69,9 @@ func detect_ut():
 			else:
 				# print("Couldn't detect Undertale or not installed!")
 				return ""
+		"Web":
+			print("Cannot detect Undertale on Web. Please use an standalone version.")
+			return ""
 		_:
 			print("Unsupported OS %s! Couldn't detect Undertale!" % OS.get_name())
 			return ""

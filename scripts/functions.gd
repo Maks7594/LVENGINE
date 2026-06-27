@@ -48,6 +48,10 @@ func _process(_delta):
 func is_odd(x: int) -> bool:
 	return x % 2 != 0
 
+func debug_print(text):
+	if PlayerVars.settings["debug"]:
+		print(text)
+
 func _input(event):
 	if event.is_action_pressed("fullscreen"):
 		PlayerVars.fs_toggle()

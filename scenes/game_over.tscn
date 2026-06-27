@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c27epo0g7164b"]
+
+[ext_resource type="Script" uid="uid://bht3xywxytuaw" path="res://scenes/gameover.gd" id="1_racf3"]
+[ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://gdcnpm3vv1w5" path="res://images/gameover.png" id="3_7m3ot"]
+[ext_resource type="Script" uid="uid://fe2it773bqo6" path="res://scripts/utdr-label.gd" id="3_racf3"]
+
+[node name="GameOver" type="Control" unique_id=699819040]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_racf3")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1820237696]
+volume_db = -5.0
+
+[node name="TypeWriterLabel" type="RichTextLabel" parent="." unique_id=2021128557]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = 2.0
+offset_right = 181.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tbwuq")
+script = ExtResource("3_racf3")
+typing_speed = 20.0
+metadata/_custom_type_script = "uid://fe2it773bqo6"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=548382496]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -211.0
+offset_right = 211.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7m3ot")
+
+[connection signal="typewriting_done" from="TypeWriterLabel" to="." method="_on_typewriting_done"]

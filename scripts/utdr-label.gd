@@ -1,12 +1,12 @@
-## Provides a configurable "typewriter" effect on a [RichTextLabel].
+## A fork of TypeWriterLabel made for LVENGINE's Undertale dialogue.
 @tool
-class_name TypeWriterLabel extends RichTextLabel
+class_name UTDRLabel extends RichTextLabel
 
 ## Emitted when the last character from the text of the last [method typewrite] has been typed.
 signal typewriting_done
 
 ## Current typing speed in character per second.
-@export_range(0.0, 1000.0) var typing_speed: float = 40.0:
+@export_range(0.0, 1000.0) var typing_speed: float = 30.0:
 	set(value):
 		typing_speed = value
 		if !Engine.is_editor_hint():
@@ -43,7 +43,6 @@ var _paused: bool = false
 var _wait_before_buffer: float = -999.0
 var _wait_after_buffer: float = -999.0
 
-# INSPECTOR CONFIGURATION
 func _validate_property(property: Dictionary) -> void:
 	var hide_list = []
 	if !stop_after_character:
@@ -53,13 +52,10 @@ func _validate_property(property: Dictionary) -> void:
 	if property.name in hide_list:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
-
-# MAIN FUNCTIONS
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		if !text.is_empty():
 			typewrite(text)
-
 
 func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
@@ -112,17 +108,11 @@ func _is_stop_character(char: String) -> bool:
 			return true
 	return false
 
-
-## Returns [code]true[/code] if still has some text to type.
-## It means that even if typing is paused or stopped, [method is_typing] still returns [code]true[/code].
 func is_typing() -> bool:
 	return _typing
 
-
-## Returns [code]true[/code] if typing is paused, typically by calling [method pause_typing].
 func is_paused() -> bool:
 	return _paused
-
 
 ## Type the given text at [member typing_speed] characters per seconds.
 ## The given text can be BBCode.

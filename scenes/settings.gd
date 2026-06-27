@@ -33,18 +33,16 @@ func snd():
 	var mus = "mus_options_fall.ogg" # Default
 	
 	# Roll random number
-	# var random = randi_range(1, 25)
-	var random = 10
+	var random = randi_range(1, 15)
 	print(random)
 	
-	if random == 10:
+	if random == 1:
 		$Settings/Dog.visible = false
 		$Settings/DogSanctuary.visible = true
-		$Settings/DogLabel.position.y = -50
+		$Settings/DogLabel.position.y = -75
 		mus_settings.stream = load("res://music/mus_options_sanctuary.ogg")
 		mus_settings.stream.loop = true
 		$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]dark sanctuaries\nare in undertale\nyou just cant make\na dark world[/tornado]"
-		$Settings/Dog.animation = "spring"
 		Funcs.do_sound(snd_harp)
 		await get_tree().create_timer(1.5).timeout
 		Funcs.do_music(mus_settings)
@@ -68,7 +66,7 @@ func snd():
 			mus = "mus_options_winter.ogg"
 			$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]cold outside\nbut stay warm\ninside of you[/tornado]"
 			$Settings/Dog.animation = "winter"
-	if PlayerVars.other["undertale_detected"] != "": # If we detected the Undertale installation
+	if PlayerVars.other["undertale_detected"] != "":
 		# print("Trying path " + PlayerVars.other["undertale_detected"] + mus)
 		var mus_bytes: PackedByteArray = FileAccess.get_file_as_bytes(PlayerVars.other["undertale_detected"] + mus)
 		if mus_bytes.is_empty():
@@ -102,11 +100,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
 		selection = (selection + 1 + buttons.size()) % buttons.size()
 		Funcs.do_sound(snd_select)
-		select(buttons[selection])
+		select()
 	elif Input.is_action_just_pressed("up"):
 		selection = (selection - 1 + buttons.size()) % buttons.size()
 		Funcs.do_sound(snd_select)
-		select(buttons[selection])
+		select()
 	elif Input.is_action_just_pressed("confirm"):
 		do_confirm()
 
@@ -138,7 +136,7 @@ func do_confirm():
 		PlayerVars.settings["bigger_window"] = false if PlayerVars.settings["bigger_window"] == true else true
 		buttons[selection].text = "Window Scale: 2x" if PlayerVars.settings["bigger_window"] else "Window Scale: 1x"
 
-func select(btn: Node):
+func select():
 	for i in range(buttons.size()):
 		if i == selection:
 			buttons[i].modulate = Color("YELLOW")

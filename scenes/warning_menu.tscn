@@ -102,7 +102,7 @@ theme = ExtResource("2_5k4te")
 theme_override_font_sizes/font_size = 16
 text = "WARNING! Undertale was not detected as installed.
 LVENGINE uses these assets to play music from the game.
-You will NOT hear licensed music. Please install the game."
+You will NOT hear Undertale music. Please install the game."
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=758623561]
 visible = false

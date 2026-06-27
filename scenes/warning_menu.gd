@@ -13,8 +13,12 @@ func _ready():
 	PlayerVars.load_settings()
 	PlayerVars.apply_settings()
 	
-	if PlayerVars.detect_ut() == "":
+	if OS.get_name() != "Web":
+		if PlayerVars.detect_ut() == "":
+			$ErrorLabel.visible = true
+	else:
 		$ErrorLabel.visible = true
+		$ErrorLabel.text = "WARNING! You are playing on a browser.\nYou will NOT hear Undertale music.\nIt is highly recommended to download a standalone version for your platform."
 	
 	var tween1 = create_tween()
 	tween1.tween_property($Label, "modulate:a", 1.0, 0.5)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dc8lxgi56v820"]
+
+[ext_resource type="Script" uid="uid://dhmgh4wuda7go" path="res://data/base/item.gd" id="1_om6sd"]
+
+[resource]
+script = ExtResource("1_om6sd")
+name = "Butterscotch Pie"
+short_name = "ButtsPie"
+info = "* Butterscotch-cinnamon[br]  pie, one slice."
+on_use = "* You ate the Butterscotch Pie."
+metadata/_custom_type_script = "uid://dhmgh4wuda7go"

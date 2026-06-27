@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4xn28s3c8n1a"
-path="res://.godot/imported/noelle.png-ad244f4e9d64981098f03ce67d8085c0.ctex"
+uid="uid://gdcnpm3vv1w5"
+path="res://.godot/imported/gameover.png-94ac5c8235c44824ab90c00f0b58282a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/noelle.png"
-dest_files=["res://.godot/imported/noelle.png-ad244f4e9d64981098f03ce67d8085c0.ctex"]
+source_file="res://images/gameover.png"
+dest_files=["res://.godot/imported/gameover.png-94ac5c8235c44824ab90c00f0b58282a.ctex"]
 
 [params]
 

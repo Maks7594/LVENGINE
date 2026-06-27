@@ -43,6 +43,7 @@ var subsubmenu := 0
 var options_cnt = 0
 var items_page := 0
 
+var flavor_txtbox := true
 var text_done := false
 var txtbox_before_round := false
 
@@ -196,7 +197,9 @@ func do_submenu(sub_menu: int, show_opt: bool):
 		options[2].text = "* Flee"
 
 func _input(event):
-	if bm.plr_turn:
+	if event.is_action_pressed("menu"):
+		bm.end_battle_text()
+	if bm.plr_turn and not bm.battle_ended:
 		if submenu == 0:
 			if event.is_action_pressed("right"):
 				btn_selection = (btn_selection + 1 + 4) % 4
@@ -307,4 +310,6 @@ func _physics_process(_delta):
 				if txtbox_before_round:
 					bm.start_turn()
 					txtbox_before_round = false
+				if bm.battle_ended:
+					bm.end_battle()
 				text_done = false

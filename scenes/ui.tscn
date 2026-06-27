@@ -9,10 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="4_6rmj2"]
 [ext_resource type="Theme" uid="uid://bj3dm2bkcl6qm" path="res://themes/dialogue.tres" id="4_y4yjw"]
 [ext_resource type="AudioStream" uid="uid://b4x8fbawo3gj1" path="res://sounds/click.wav" id="5_vdcm2"]
-[ext_resource type="Script" uid="uid://bigcfyacvshrd" path="res://addons/type_writer_label/classes/type_writer_label.gd" id="5_waa4j"]
 [ext_resource type="AudioStream" uid="uid://ckn0tupnufe4a" path="res://sounds/typewriter.wav" id="6_ok7cu"]
 [ext_resource type="AudioStream" uid="uid://btqhqxcyuqu3e" path="res://sounds/swallow.wav" id="6_vsj0x"]
 [ext_resource type="AudioStream" uid="uid://b1xt0eshpiuaj" path="res://sounds/heal.wav" id="7_qsv74"]
+[ext_resource type="Script" uid="uid://fe2it773bqo6" path="res://scripts/utdr-label.gd" id="11_vsj0x"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=337072073]
 script = ExtResource("1_nltto")
@@ -229,18 +229,19 @@ offset_top = 146.0
 offset_right = 576.0
 offset_bottom = 152.0
 
-[node name="TypeWriterLabel" type="RichTextLabel" parent="Textbox" unique_id=1951067203 node_paths=PackedStringArray("typing_sound_player")]
+[node name="TypeWriterLabel" type="RichTextLabel" parent="Textbox" unique_id=480458581 node_paths=PackedStringArray("typing_sound_player")]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 20.0
-offset_right = 548.0
-offset_bottom = 118.0
+offset_right = 570.0
+offset_bottom = 154886.0
 theme = ExtResource("4_y4yjw")
 bbcode_enabled = true
-script = ExtResource("5_waa4j")
-typing_speed = 30.0
+scroll_active = false
+autowrap_trim_flags = 128
+script = ExtResource("11_vsj0x")
 typing_sound_player = NodePath("../TypeSound")
-metadata/_custom_type_script = "uid://bigcfyacvshrd"
+metadata/_custom_type_script = "uid://fe2it773bqo6"
 
 [node name="TypeSound" type="AudioStreamPlayer" parent="Textbox" unique_id=728716362]
 stream = ExtResource("6_ok7cu")

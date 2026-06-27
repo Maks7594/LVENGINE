@@ -15,20 +15,14 @@ var run_speed := 200.0
 var looking = Vector2.DOWN
 var interaction_distance := 20
 
-# This will store "x" or "y" to remember what we pressed first
 var face_priority = ""
 
 func update_cast():
 	cast.target_position = looking * interaction_distance
 
 func _input(event):
-	if PlayerVars.settings["debug"]:
-		if Input.is_key_pressed(KEY_F1):
-			PlayerData.player["hp"] = 5
-		elif Input.is_key_pressed(KEY_F2):
-			PlayerData.player["hp"] = 10
-		elif Input.is_key_pressed(KEY_F3):
-			PlayerData.player["hp"] = 20
+	if event.is_action_pressed("DEBUG"):
+		PlayerData.DEBUG_set_lv(PlayerData.player["love"] + 1)
 	
 	if event.is_action_pressed("confirm"):
 		if cast.is_colliding() and PlayerData.global["interact"]:
@@ -36,9 +30,18 @@ func _input(event):
 			if target.has_method("interact"):
 				target.interact()
 
-func _physics_process(_delta: float):
+func _process(_delta):
+	if PlayerVars.settings["debug"]:
+		if Input.is_key_pressed(KEY_F1):
+			PlayerData.player["hp"] = 5
+		elif Input.is_key_pressed(KEY_F2):
+			PlayerData.player["hp"] = 10
+		elif Input.is_key_pressed(KEY_F3):
+			PlayerData.player["hp"] = 20
+
+func _physics_process(_delta):
 	if PlayerData.global["cam_active"]:
-		if not $"../Camera" == null:
+		if get_node_or_null(^"../Camera") != null:
 			#$"../Camera".position.x = lerp($"../Camera".position.x, position.x, 0.1)
 			#$"../Camera".position.y = lerp($"../Camera".position.y, position.y, 0.1)
 			$"../Camera".position.x = position.x
@@ -73,14 +76,27 @@ func _physics_process(_delta: float):
 	update_animation(v.x, v.y)
 
 func update_animation(x, y):
-	if x == 0 and y == 0 or not PlayerData.global["interact"]:
+	if (x == 0 and y == 0) or not PlayerData.global["interact"] or velocity == Vector2.ZERO:
 		sprite.stop()
+		sprite.frame = 1
 		return
 
 	if face_priority == "x":
-		if x > 0: sprite.play("right")
-		elif x < 0: sprite.play("left")
+		if x > 0:
+			if sprite.animation != "right" or not sprite.is_playing(): 
+				sprite.play("right")
+				if sprite.frame == 1 or sprite.frame == 3: sprite.frame = 0 
+		elif x < 0:
+			if sprite.animation != "left" or not sprite.is_playing(): 
+				sprite.play("left")
+				if sprite.frame == 1 or sprite.frame == 3: sprite.frame = 0
 	
 	elif face_priority == "y":
-		if y > 0: sprite.play("down")
-		elif y < 0: sprite.play("up")
+		if y > 0:
+			if sprite.animation != "down" or not sprite.is_playing(): 
+				sprite.play("down")
+				if sprite.frame == 1 or sprite.frame == 3: sprite.frame = 0
+		elif y < 0:
+			if sprite.animation != "up" or not sprite.is_playing(): 
+				sprite.play("up")
+				if sprite.frame == 1 or sprite.frame == 3: sprite.frame = 0

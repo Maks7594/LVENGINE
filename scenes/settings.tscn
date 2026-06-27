@@ -46,7 +46,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gjs24")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -63,7 +63,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1g033")
 }],
-"loop": true,
+"loop": 1,
 "name": &"spring",
 "speed": 1.5
 }, {
@@ -74,7 +74,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wqwn7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"summer",
 "speed": 2.0
 }, {
@@ -82,7 +82,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oe2nd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"winter",
 "speed": 5.0
 }]
@@ -208,7 +208,7 @@ layout_mode = 0
 offset_left = 106.0
 offset_top = 33.0
 offset_right = 340.49075
-offset_bottom = 183.61131
+offset_bottom = 1037.2356
 rotation = 0.33845916
 theme = ExtResource("6_uhhto")
 bbcode_enabled = true
