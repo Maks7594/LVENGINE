@@ -6,6 +6,7 @@ LVENGINE is an Undertale engine made in Godot. It's inspired by [Kristal](https:
 - Easy item creation, enemy creation, battles, overworld, NPCs
 - A near perfect recreation of Undertale's menu
 - 99% human written code (im trying to not use gen ai for this project, unless i get really stuck on something)
+- All code I wrote here runs on hopes and dreams
 - Since it's written in GDscript, adding new features or expanding the engine is easy
 
 ## To-do
