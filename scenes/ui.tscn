@@ -529,9 +529,6 @@ offset_top = 412.0
 offset_right = 346.0
 offset_bottom = 418.0
 
-[node name="Battle" type="Node2D" parent="." unique_id=1984221743]
-visible = false
-
 [node name="Overlay" type="ColorRect" parent="." unique_id=923930859]
 visible = false
 offset_right = 640.0

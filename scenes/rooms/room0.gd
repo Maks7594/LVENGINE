@@ -15,7 +15,6 @@ func _ready():
 		var mus_bytes: PackedByteArray = FileAccess.get_file_as_bytes(PlayerVars.other["undertale_detected"] + "mus_ruins.ogg")
 		if mus_bytes.is_empty():
 			print("Music file is empty!")
-			$Settings/MusErrorLabel.visible = true
 			return
 		var mus_stream := AudioStreamOggVorbis.load_from_buffer(mus_bytes)
 		mus_stream.loop = true
@@ -23,7 +22,7 @@ func _ready():
 	Funcs.do_music($SFX/Music)
 	
 	var tween = create_tween()
-	tween.tween_property($UI/Overlay, "modulate:a", 0.0, 0.3)
+	tween.tween_property(overlay, "modulate:a", 0.0, 0.3)
 
 func start_battle_anim():
 	$SFX/Music.playing = false

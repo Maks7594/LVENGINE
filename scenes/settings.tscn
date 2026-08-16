@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://bry764gne173q" path="res://sounds/select.wav" id="4_am25x"]
 [ext_resource type="Texture2D" uid="uid://t8uhea673sn8" path="res://images/settings_stuff/dog_settings.png" id="6_83j8s"]
 [ext_resource type="Theme" uid="uid://udeoiv5vgmvo" path="res://themes/menus.tres" id="6_uhhto"]
-[ext_resource type="Texture2D" uid="uid://ba4ncxslyn864" path="res://images/settings_stuff/psiak.gif" id="7_83j8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjs24"]
 atlas = ExtResource("6_83j8s")
@@ -192,16 +191,6 @@ sprite_frames = SubResource("SpriteFrames_7kvyq")
 animation = &"spring"
 frame_progress = 0.5309519
 
-[node name="DogSanctuary" type="GIFPlayer" parent="Settings" unique_id=459861681]
-gif = ExtResource("7_83j8s")
-visible = false
-layout_mode = 0
-offset_left = 61.0
-offset_top = 95.0
-offset_right = 573.0
-offset_bottom = 401.0
-scale = Vector2(0.5, 0.5)
-
 [node name="DogLabel" type="RichTextLabel" parent="Settings" unique_id=1944713182]
 modulate = Color(1, 1, 1, 0.49803922)
 layout_mode = 0
@@ -219,13 +208,14 @@ visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = -316.0
-offset_top = 203.0
+offset_top = 184.0
 offset_right = 242.0
-offset_bottom = 242.0
+offset_bottom = 238.0
 theme = ExtResource("6_uhhto")
 theme_override_font_sizes/font_size = 16
-text = "Failed to find UNDERTALE music. Please install the game if you haven't done so already.
-Also try restarting your game. Game file detection is currently unimplemented on macOS."
+text = "Failed to find UNDERTALE music. Please install the game if you haven't done so already,
+then restart LVENGINE. Also make sure the game is installed to
+your root drive (C:\\ or /)"
 
 [node name="BlackBar" type="ColorRect" parent="Settings" unique_id=1567514748]
 layout_mode = 0

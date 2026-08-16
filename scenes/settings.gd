@@ -32,22 +32,6 @@ func unsheathe():
 func snd(): 
 	var mus = "mus_options_fall.ogg" # Default
 	
-	# Roll random number
-	var random = randi_range(1, 15)
-	print(random)
-	
-	if random == 1:
-		$Settings/Dog.visible = false
-		$Settings/DogSanctuary.visible = true
-		$Settings/DogLabel.position.y = -75
-		mus_settings.stream = load("res://music/mus_options_sanctuary.ogg")
-		mus_settings.stream.loop = true
-		$Settings/DogLabel.text = "[tornado radius=10.0 freq=2.0 connected=1]dark sanctuaries\nare in undertale\nyou just cant make\na dark world[/tornado]"
-		Funcs.do_sound(snd_harp)
-		await get_tree().create_timer(1.5).timeout
-		Funcs.do_music(mus_settings)
-		return
-	
 	# Match month to season
 	match Time.get_date_dict_from_system()["month"]:
 		3, 4, 5: # Spring
@@ -96,16 +80,16 @@ func _ready():
 	buttons[3].text = "Sound: " + str(PlayerVars.settings["sfx"])
 	buttons[4].text = "Window Scale: 2x" if PlayerVars.settings["bigger_window"] else "Window Scale: 1x"
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("down"):
+func _input(input):
+	if input.is_action_pressed("down"):
 		selection = (selection + 1 + buttons.size()) % buttons.size()
 		Funcs.do_sound(snd_select)
 		select()
-	elif Input.is_action_just_pressed("up"):
+	elif input.is_action_pressed("up"):
 		selection = (selection - 1 + buttons.size()) % buttons.size()
 		Funcs.do_sound(snd_select)
 		select()
-	elif Input.is_action_just_pressed("confirm"):
+	elif input.is_action_pressed("confirm"):
 		do_confirm()
 
 func do_confirm():

@@ -10,18 +10,20 @@ const base_slow_speed := 75.0
 
 var is_active := false
 var speed := 150.0
+var slow_speed := 75.0
 var mode := 0
-
-# This will store "x" or "y" to remember what we pressed first
-var face_priority = ""
 
 func red_soul():
 	var x := Input.get_axis("left", "right")
 	var y := Input.get_axis("up", "down")
 	
-	velocity.x = x * speed
-	velocity.y = y * speed
-	
+	if Input.is_action_pressed("cancel"):
+		velocity.x = x * slow_speed
+		velocity.y = y * slow_speed
+	else:
+		velocity.x = x * speed
+		velocity.y = y * speed
+		
 	move_and_slide()
 
 func _physics_process(_delta: float):

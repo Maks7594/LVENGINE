@@ -7,8 +7,6 @@ extends CharacterBody2D
 
 @onready var cast = $InteractionRaycast
 
-@onready var ui = $"/root/UI"
-
 var v = Vector2.ZERO
 var speed := 150.0
 var run_speed := 200.0

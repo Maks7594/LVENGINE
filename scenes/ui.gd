@@ -72,6 +72,8 @@ func update_ui():
 	
 	if PlayerData.player["items"].size() == 0:
 		$SubmenuSelector/Item.modulate = Color("505050ff")
+	else:
+		$SubmenuSelector/Item.modulate = Color("ffffffff")
 	
 	$QuickInfo/PlayerName.text = PlayerData.player["name"]
 	$QuickInfo/LoveValue.text = str(PlayerData.player["love"])
@@ -85,7 +87,11 @@ func update_ui():
 	Funcs.debug_print("AT:")
 	Funcs.debug_print("DF:")
 	Funcs.debug_print("EXP: " + str(PlayerData.player["exp"]))
-	Funcs.debug_print("NEXT: " + str(PlayerData.player["exp"]) + "-" + str(PlayerData.stats[PlayerData.player["love"] + 1][3]) + "=" + str(PlayerData.stats[PlayerData.player["love"] + 1][3] - PlayerData.player["exp"]))
+	
+	if PlayerData.player["love"] == 20:
+		Funcs.debug_print("NEXT: 0 (because player LV is 20)")
+	else:
+		Funcs.debug_print("NEXT: " + str(PlayerData.player["exp"]) + "-" + str(PlayerData.stats[PlayerData.player["love"] + 1][3]) + "=" + str(PlayerData.stats[PlayerData.player["love"] + 1][3] - PlayerData.player["exp"]))
 	
 	stat_labels[0].text = '"%s"' % PlayerData.player["name"]
 	stat_labels[1].text = "LV %d" % PlayerData.player["love"]
@@ -93,7 +99,12 @@ func update_ui():
 	stat_labels[3].text = "AT %d (%d)" % [PlayerData.player["base_at"], PlayerData.player["equip_at"]]
 	stat_labels[4].text = "DF %d (%d)" % [PlayerData.player["base_df"], PlayerData.player["equip_df"]]
 	stat_labels[5].text = "EXP: %d" % PlayerData.player["exp"]
-	stat_labels[6].text = "NEXT: %d" % (PlayerData.stats[PlayerData.player["love"] + 1][3] - PlayerData.player["exp"])
+	
+	if PlayerData.player["love"] == 20:
+		stat_labels[6].text = "NEXT: 0"
+	else:
+		stat_labels[6].text = "NEXT: %d" % (PlayerData.stats[PlayerData.player["love"] + 1][3] - PlayerData.player["exp"])
+		
 	stat_labels[7].text = "WEAPON: %s" % PlayerData.get_item_data(PlayerData.player["equipped"][0], "name")
 	stat_labels[8].text = "ARMOR: %s" % PlayerData.get_item_data(PlayerData.player["equipped"][1], "name")
 	stat_labels[9].text = "GOLD: %d" % PlayerData.player["gold"]
@@ -111,7 +122,7 @@ func update_ui():
 	
 	if has_node("../Player"):
 		var onscr_plrpos = $"../Player".get_global_transform_with_canvas().origin
-		if onscr_plrpos.y > 240:
+		if onscr_plrpos.y > 243:
 			$QuickInfo.position.y = 322.0
 		else:
 			$QuickInfo.position.y = 52.0
@@ -166,8 +177,8 @@ func do_textbox(text: String):
 	textbox.visible = true
 	typewriter.typewrite(text)
 
-func do_multipage_textbox(dialogue: Array, js_type: bool):
-	if not js_type:
+func do_multipage_textbox(dialogue: Array, advance: bool):
+	if not advance:
 		multidialogue = dialogue
 		multipage = true
 		PlayerData.global["interact"] = false

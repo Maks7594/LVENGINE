@@ -14,7 +14,7 @@ LVENGINE is an Undertale engine made in Godot. It's inspired by [Kristal](https:
 - Lose my sanity
 
 ## How use?
-Download this project's source. Then import and open the project in Godot (4.6.2 onwards).  
+Download this project's source. Then import and open the project in Godot (4.7 onwards).  
 Items can be found in `res://data/items/`, enemies and encounters can be found in the same `data` directory  
 Use `TileMapLayer` and a spritesheet to make your maps. This project comes with an example Ruins spritesheet with collisions.  
 

@@ -19,7 +19,7 @@ func _process(_delta):
 		
 		p2 -= 1
 		
-		if p2 == 0:
+		if p2 <= 0:
 			shaking = "none"
 			p1 = 0
 			p2 = 0
@@ -59,14 +59,14 @@ func _input(event):
 func meta(event: String, param1, param2):
 	match event:
 		"setpos": # x, y
-			Window.position = Vector2i(param1, param2)
+			get_window().position = Vector2i(param1, param2)
 		"tweenpos": # pos, time
 			var tween = create_tween()
 			tween.tween_property(get_window(), "position", param1, param2) \
 			.set_trans(Tween.TRANS_SINE) \
 			.set_ease(Tween.EASE_OUT)
 		"setsize": # x, y
-			Window.size = Vector2i(param1, param2)
+			get_window().size = Vector2i(param1, param2)
 		"shake": # amplifier, duration (frames)
 			window_pos = get_window().position
 			

@@ -15,16 +15,16 @@ func _ready():
 	
 	Funcs.do_ut_music($SFX/Music, "mus_menu0.ogg", true)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("down"):
+func _input(input):
+	if input.is_action_pressed("down"):
 		selection = (selection + 1 + 3) % 3
 		Funcs.do_sound(snd_select)
 		select(buttons[selection])
-	elif Input.is_action_just_pressed("up"):
+	elif input.is_action_pressed("up"):
 		selection = (selection - 1 + 3) % 3
 		Funcs.do_sound(snd_select)
 		select(buttons[selection])
-	elif Input.is_action_just_pressed("confirm"):
+	elif input.is_action_pressed("confirm"):
 		do_confirm()
 
 func do_confirm():

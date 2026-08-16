@@ -6,7 +6,7 @@
 script = ExtResource("1_k7004")
 name = "Stick"
 short_name = "Stick"
-info = "* Its bark is worse than its\\n  bite."
+info = "* Its bark is worse than its[br]  bite."
 on_use = "* You threw the stick away.\\n* Then picked it back up."
 consumable = false
 usable_in_battle = false

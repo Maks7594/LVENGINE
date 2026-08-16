@@ -79,7 +79,7 @@ func get_item_data(item: String, data: String):
 			return item_tres.get(data)
 	
 	push_error("Failed to get data %s of item %s!" % [data, item])
-	return "Unknown"
+	return null
 
 func recalc_stats(love: int):
 	var old_love = player["love"]
@@ -93,10 +93,12 @@ func recalc_stats(love: int):
 	player["equip_df"] = get_item_data(player["equipped"][1], "equipped_df_boost")
 	
 	player["total_at"] = player["base_at"] + player["equip_at"] + player["at_boost"]
-	player["total_df"] = player["base_df"] + player["equip_df"] + player["at_boost"]
+	player["total_df"] = player["base_df"] + player["equip_df"] + player["df_boost"]
 	
-	var next_lvl_exp = stats[player["love"]][3]
-	if player["exp"] > next_lvl_exp:
+	if player["love"] >= 20:
+		return
+	var next_lvl_exp = stats[player["love"] + 1][3]
+	if player["exp"] >= next_lvl_exp:
 		player["love"] += 1
 		recalc_stats(player["love"])
 

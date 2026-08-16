@@ -508,7 +508,6 @@ limit_left = -160
 limit_top = -160
 limit_right = 800
 limit_bottom = 640
-position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="UI" parent="World" unique_id=1407451951 instance=ExtResource("4_y77y4")]
